@@ -1,0 +1,102 @@
+/* src/Components/Accountant/AccountantHeader.css */
+
+.accountant-dashboard-header {
+  background-color: #f8f9fa;
+  height: 70px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Logo styling */
+.accountant-logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.accountant-dashboard-logo {
+  height: 40px;
+  width: auto;
+}
+
+/* Center search bar */
+.accountant-search-bar-container {
+  max-width: 600px;
+  position: relative;
+}
+
+/* Search input styling */
+.accountant-search-bar {
+  height: 40px;
+  padding-left: 30px;
+  transition: box-shadow 0.3s ease;
+}
+
+.accountant-search-bar:focus {
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.accountant-max-w {
+  max-width: 800px;
+}
+
+.accountant-icons-container {
+  display: flex;
+  align-items: center;
+}
+
+.accountant-icon {
+  font-size: 1.5rem;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.accountant-icon:hover {
+  color: #007bff;
+}
+
+.accountant-icon-spacing {
+  margin-right: 20px !important;
+  display: block;
+}
+
+/* Popover styling */
+.accountant-popover-container {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  z-index: 1000;
+  min-width: 150px;
+  border-radius: 0.5rem;
+  right: 0;
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.accountant-popover-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.accountant-popover-content p {
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.accountant-popover-content p:hover {
+  background-color: #f0f0f0;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+  .accountant-icon-spacing {
+    display: none;
+  }
+}

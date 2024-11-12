@@ -1,0 +1,132 @@
+/* src/Components/Header/Header.css */
+
+.dashboard-header {
+  background-color: #f8f9fa;
+  height: 70px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Logo styling */
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.dashboard-logo {
+  height: 40px;
+  width: auto;
+}
+
+/* Center search bar */
+.search-bar-container {
+  max-width: 600px;
+  position: relative;
+}
+
+/* Search input styling */
+.search-bar {
+  height: 40px;
+  padding-left: 30px;
+  transition: box-shadow 0.3s ease;
+}
+
+.search-bar:focus {
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.max-w {
+  max-width: 800px;
+}
+
+.icons-container {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  font-size: 1.5rem;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  position: relative; /* Ensure this is relative for proper absolute positioning of the count */
+}
+
+.icon:hover {
+  color: #007bff; /* Change color on hover */
+}
+
+.icon-spacing {
+  margin-right: 20px !important;
+  display: block;
+}
+
+/* Shake animation */
+.shake-icon {
+  animation: shake 0.5s infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 0); }
+  25% { transform: translate(-1px, 0); }
+  50% { transform: translate(1px, 0); }
+  75% { transform: translate(-1px, 0); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Popover styling */
+.popover-container {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  z-index: 1000;
+  min-width: 150px;
+  border-radius: 0.5rem; /* Rounded corners */
+  right: 0; /* Position to the right of the icon */
+  transform: translateX(100%); /* Start from the right */
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Notification popover specific styling */
+.notification-popover {
+  transform: translateX(0); /* Bring it to original position on hover */
+  opacity: 1; /* Make it visible */
+}
+
+.popover-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.popover-content p {
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.popover-content p:hover {
+  background-color: #f0f0f0; /* Highlight on hover */
+}
+
+.notification-count {
+  position: absolute; /* Absolutely position the count */
+  top: -5px; /* Adjust the position relative to the icon */
+  right: -10px; /* Adjust the position relative to the icon */
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 0 5px;
+  font-size: 0.75rem;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+  .icon-spacing {
+    display: none;
+  }
+}

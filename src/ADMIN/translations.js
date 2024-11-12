@@ -1,0 +1,88 @@
+// translations.js
+const translations = {
+    en: {
+      groupManagement: {
+        title: 'Group Management',
+        groupName: 'Group Name',
+        actions: 'Actions',
+        addGroupPlaceholder: 'Enter group name',
+        addGroupButton: 'Add Group',
+      },
+      patientManagement: {
+        title: 'Patients',
+        no: 'No',
+        name: 'Name',
+        age: 'Age',
+        sex: 'Sex',
+        weight: 'Weight (kg)',
+        height: 'Height (cm)',
+        bloodGroup: 'Blood Group',
+      },
+      userManagement: {
+        title: 'User Management',
+        addUserButton: 'Add User',
+        email: 'Email',
+        group: 'Group',
+        actions: 'Actions',
+      },
+      userRegistration: {
+        titleRegister: 'Register User',
+        titleUpdate: 'Update User',
+        username: 'Username',
+        password: 'Password',
+        confirmPassword: 'Confirm Password',
+        email: 'Email',
+        firstName: 'First Name',
+        lastName: 'Last Name',
+        group: 'Group',
+        createNewGroupInfo: "This group doesn't exist. It will be created when you register.",
+        confirmButton: 'Confirm',
+        cancelButton: 'Cancel',
+        passwordsDoNotMatch: 'Passwords do not match!',
+      },
+    },
+    fr: {
+      groupManagement: {
+        title: 'Gestion des Groupes',
+        groupName: 'Nom du Groupe',
+        actions: 'Actions',
+        addGroupPlaceholder: "Entrez le nom du groupe",
+        addGroupButton: 'Ajouter un Groupe',
+      },
+      patientManagement: {
+        title: 'Patients',
+        no: 'N°',
+        name: 'Nom',
+        age: 'Âge',
+        sex: 'Sexe',
+        weight: 'Poids (kg)',
+        height: 'Taille (cm)',
+        bloodGroup: 'Groupe Sanguin',
+      },
+      userManagement: {
+        title: 'Gestion des Utilisateurs',
+        addUserButton: 'Ajouter un Utilisateur',
+        email: 'Email',
+        group: 'Groupe',
+        actions: 'Actions',
+      },
+      userRegistration: {
+        titleRegister: 'Enregistrer l\'Utilisateur',
+        titleUpdate: 'Mettre à Jour l\'Utilisateur',
+        username: 'Nom d\'Utilisateur',
+        password: 'Mot de Passe',
+        confirmPassword: 'Confirmer le Mot de Passe',
+        email: 'Email',
+        firstName: 'Prénom',
+        lastName: 'Nom de Famille',
+        group: 'Groupe',
+        createNewGroupInfo: "Ce groupe n'existe pas. Il sera créé lorsque vous vous enregistrerez.",
+        confirmButton: 'Confirmer',
+        cancelButton: 'Annuler',
+        passwordsDoNotMatch: 'Les mots de passe ne correspondent pas !',
+      },
+    },
+  };
+  
+  export default translations;
+  

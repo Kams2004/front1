@@ -1,0 +1,291 @@
+/* General styling for the login page */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('./test1.png') no-repeat center center fixed; 
+  background-size: cover; /* Ensures the image covers the entire background */
+}
+
+/* The login container has two sides: the image on the left and form on the right */
+.login-container {
+  display: flex;
+  width: 60%; /* Adjusted width for more space */
+  max-width: 999px; /* Increase max width for larger screens */
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Left side: image container */
+.image-container {
+  flex: 1.5; /* Takes up half the space */
+  background-color: #eaeaea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.baby-image {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 15px; /* Rounded corners */
+}
+
+/* Right side: form container */
+.form-container {
+  flex: 1.5; /* Allocate more space to the form container */
+  padding: 40px; /* Increase padding to make the form look more spacious */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* Circular logo */
+.app-logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%; /* Makes the logo circular */
+  margin-bottom: 10px;
+}
+
+/* All text bold */
+h2, p, label, .forgot-password {
+  font-weight: bold;
+}
+
+/* Role buttons styling */
+.role-buttons {
+  display: flex;
+  justify-content: space-around;
+  gap: 15px; /* Increase gap between buttons */
+  margin-bottom: 20px;
+  flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
+}
+
+.role-button {
+  flex: 1; /* Each button will take an equal part of the available space */
+  min-width: 100px; /* Minimum width for each button */
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.role-button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.role-button:hover {
+  transform: translateY(-5px);
+  background-color: #0056b3;
+}
+
+/* Form input styling */
+.input-group-text {
+  background-color: #f0f0f0;
+  border-radius: 30px 0 0 30px; /* Rounded start of the input group */
+  border-right: none;
+}
+
+.input-field {
+  border-radius: 0 30px 30px 0; /* Rounded input fields */
+  border-left: none;
+}
+
+/* Remember me and forgot password section */
+.options {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+}
+
+.remember-me input {
+  margin-right: 10px;
+}
+.forgot-password {
+  color: #007bff;            /* Color for the link */
+  text-decoration: none;     /* Remove underline */
+  font-weight: bold;         /* Keep it bold */
+  border: none;              /* Ensure no border */
+  padding: 0;                /* Reset padding */
+  cursor: pointer;           /* Change cursor to pointer */
+  background-color: transparent; 
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* Submit button styling */
+.submit-button {
+  width: 100%;
+  padding: 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 30px; /* Rounded submit button */
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  transform: translateY(-5px); /* Movement on hover */
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Message field styling */
+.message-field {
+  border-radius: 20px; /* Slightly oval ends */
+  resize: none; /* Prevent resizing */
+}
+
+/* Registration link styling */
+.link-button {
+  color: #007bff;
+  text-decoration: underline; /* Underline for link effect */
+  cursor: pointer;
+}
+
+/* Eye icon styling */
+.eye-icon {
+  cursor: pointer;
+}
+
+.eye-icon i {
+  font-size: 1.2rem; /* Adjust size if needed */
+}
+
+@media (max-width: 768px) {
+  /* Stack the login form and image on smaller screens */
+  .login-container {
+      flex-direction: column;
+      width: 90%;
+  }
+
+  .image-container {
+      width: 100%;
+      padding: 0;
+  }
+
+  .form-container {
+      padding: 20px;
+  }
+}
+
+/* Request Registration Form Styling */
+.registration-form {
+  margin-top: 20px; /* Add space above the form */
+}
+
+.registration-form .d-flex {
+  margin-top: 20px; /* Space above the buttons */
+}
+
+.role-button {
+  margin-right: 20px; /* Space between Cancel and Confirm buttons */
+}
+
+/* Other styles remain unchanged... */
+
+/* Styles for confirmation message */
+.confirmation-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  z-index: 1000;
+  animation: slideDown 0.5s ease-out forwards;
+}
+
+@keyframes slideDown {
+  from {
+      top: -50px;
+  }
+  to {
+      top: 0;
+  }
+}
+
+.confirmation-text {
+  font-size: 1.2rem;
+}
+
+.progress-bar-container {
+  background-color: rgba(255, 255, 255, 0.2);
+  height: 5px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.progress-bar {
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  animation: progressAnimation 5s linear forwards;
+}
+
+@keyframes progressAnimation {
+  from {
+      width: 0%;
+  }
+  to {
+      width: 100%;
+  }
+}
+.green-container {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+
+
+.progress-green {
+    height: 100%;
+    background-color: white;
+    transition: width 1s linear;
+}
+.info-message {
+  font-size: 1rem;
+  color: red;
+  margin-bottom: 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.warning-icon {
+  margin-right: 5px; /* Space between icon and text */
+  font-size: 1.2rem; /* Adjust icon size */
+}

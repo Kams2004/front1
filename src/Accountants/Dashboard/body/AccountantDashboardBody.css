@@ -1,0 +1,47 @@
+/* Accountant Dashboard Body Container */
+.accountant-dashboard-body {
+ /* Increased top padding for more space below header */
+  /* margin-left: 100px; Left margin to ensure space from the sidebar */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 90px;
+ 
+}
+
+/* Top row styling for the three small containers */
+.accountant-top-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  width: 100%;
+  max-width: 80%;
+}
+
+/* Individual small container styling */
+.accountant-small-container {
+  flex: 1;
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  min-width: 200px;
+}
+
+/* Bottom row with transaction list container */
+.accountant-bottom-row {
+  width: 100%;
+  max-width: 80%;
+  margin-top: 2rem; /* Additional margin for space between rows */
+  display: flex;
+  justify-content: center;
+}
+
+.accountant-transactions-list {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  width: 100%;
+}

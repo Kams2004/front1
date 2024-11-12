@@ -1,0 +1,31 @@
+/* src/Components/Accountant/Body/AccountantDashboardBody.css */
+
+
+/* Top row styling for the three small containers */
+.accountant-top-row {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+/* Individual small container styling */
+.accountant-small-container {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+/* Bottom row with transaction list container */
+.accountant-bottom-row {
+    margin-top: 1.5rem;
+}
+
+.accountant-transactions-list {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}

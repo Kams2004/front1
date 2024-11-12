@@ -1,0 +1,82 @@
+/* AdminSettingsContainer.css */
+
+.admin-settings-container {
+    width: 100%; /* Full width of the container */
+    height: 100%; /* Full height of the container */
+    background-color: #f8f9fa; /* Background color to match larger containers */
+    padding: 20px; /* Padding */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for aesthetics */
+    border-radius: 8px; /* Rounded corners */
+  }
+  
+  /* Ensuring full height for the bottom-row containers */
+  .admin-settings-bottom-row {
+    display: flex; /* Containers are side by side */
+    flex: 1; /* Takes up available height */
+  }
+  
+  .admin-settings-container h2 {
+    margin-bottom: 1rem;
+  }
+  
+  .admin-settings-container .admin-settings-blue-line {
+    width: 100%;
+    height: 4px;
+    background-color: #007bff; /* Blue line */
+    margin: 0 auto 1.5rem;
+  }
+  
+  /* Profile Picture Section */
+  .admin-settings-container .admin-settings-profile-picture-section {
+    margin-right: 2rem;
+  }
+  
+  .admin-settings-container .admin-settings-admin-profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Rounded circle */
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
+  
+  /* Align Buttons Vertically */
+  .admin-settings-container .admin-settings-admin-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+  
+  .admin-settings-container .admin-settings-admin-buttons .btn {
+    margin-bottom: 0.5rem;
+    width: 120px;
+  }
+  
+  /* Form Fields */
+  .admin-settings-container .settings-form .admin-settings-form-group {
+    margin-bottom: 1.5rem;
+    text-align: initial;
+  }
+  
+  .admin-settings-container .settings-form input {
+    padding: 0.75rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  
+  /* Buttons */
+  .admin-settings-container .btn-primary {
+    background-color: #007bff; /* Primary Blue */
+    border: none;
+  }
+  
+  .admin-settings-container .btn-danger {
+    background-color: #dc3545; /* Danger Red */
+    border: none;
+  }
+  
+  .admin-settings-container .form-group.text-center {
+    margin-top: 2rem;
+  }
+  

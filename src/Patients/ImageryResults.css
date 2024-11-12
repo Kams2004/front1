@@ -1,0 +1,153 @@
+/* ImageryResults.css */
+.report-container {
+    grid-column: span 3;
+    padding: 30px; /* Increased padding for a more spacious look */
+    background-color: #f0f4f8; /* Softer background color for a cleaner feel */
+    border: 1px solid #d1d5db; /* Light gray border */
+    border-radius: 12px; /* Slightly larger border radius */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* More prominent shadow */
+    position: relative;
+    font-family: 'Arial', sans-serif; /* Modern font choice */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px; /* Increased spacing below header */
+}
+
+.header-row {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 12px; /* Slightly larger margin for clearer separation */
+}
+
+.header-item {
+    flex: 1; 
+    text-align: left; 
+    padding: 5px; /* Padding for each header item */
+}
+
+.header-item:last-child {
+    text-align: right; 
+}
+
+.header-item p {
+    margin: 0; 
+}
+
+h1 {
+    font-size: 28px; /* Larger font size for the title */
+    color: #2c3e50; /* Darker color for better readability */
+    text-align: center;
+}
+
+header, section {
+    margin-bottom: 25px; /* Consistent spacing for sections */
+}
+
+p {
+    font-size: 15px; /* Slightly larger font for better readability */
+    line-height: 1.8; /* Increased line height */
+    color: #4a4a4a; /* Darker text for improved contrast */
+}
+
+.download-button {
+    padding: 12px 24px; /* Larger padding for buttons */
+    background-color: #3498db; /* Bright blue for buttons */
+    color: white;
+    border: none;
+    border-radius: 6px; /* Rounded corners for buttons */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Transition for hover effect */
+}
+
+.download-button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+}
+
+.collapsible-header {
+    font-size: 20px; /* Larger font size for collapsible headers */
+    cursor: pointer;
+    padding: 12px; /* More padding for better touch targets */
+    background-color: #3498db; /* Consistent button color */
+    color: white;
+    border-radius: 6px; /* Consistent border radius */
+    margin-bottom: 12px; /* Space below each collapsible header */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icon {
+    margin-left: 10px; 
+    transition: transform 0.3s; 
+}
+
+.up {
+    transform: rotate(180deg); 
+    color: #ced4da; /* Slightly lighter color for up icon */
+}
+
+.down {
+    transform: rotate(0deg);
+    color: #ced4da; 
+}
+
+ul {
+    margin-top: 10px;
+    padding-left: 25px; /* Increased padding for bullet points */
+}
+
+.examinations {
+    margin-top: 15px; /* Space below the "Examen" title */
+}
+
+.static-header {
+    font-size: 22px; /* Larger static header size */
+    font-weight: bold;
+    margin-bottom: 12px; /* Space below the static header */
+    color: #2c3e50; /* Darker color for static headers */
+}
+
+.exam-title {
+    font-size: 20px; /* Larger font size for exam titles */
+    cursor: pointer;
+    padding: 12px;
+    background-color: #2ecc71; /* Unique color for exam titles */
+    color: white;
+    border-radius: 6px; /* Consistent border radius */
+    margin-bottom: 8px; /* Space below each exam title */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s; /* Transition for hover effect */
+}
+
+.exam-title:hover {
+    background-color: #27ae60; /* Darker green on hover */
+}
+
+.exam-details {
+    background-color: #f9f9f9; /* Light background for details */
+    border-radius: 6px;
+    padding: 12px;
+    margin-top: 8px; /* Space above the details */
+    border: 1px solid #dcdcdc; /* Border for details */
+}
+
+.indication, .technique, .results, .conclusion {
+    margin-top: 12px; /* Space above sections */
+}
+
+/* Additional styles for lists inside the exam details */
+.exam-details ul {
+    padding-left: 20px; /* Padding for bullet points in details */
+}
+
+.exam-details li {
+    margin-bottom: 5px; /* Space between list items */
+    color: #333; /* Darker text for list items */
+}

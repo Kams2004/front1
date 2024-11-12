@@ -1,0 +1,56 @@
+{
+    "searchPlaceholder": "Recherche",
+    "noNotifications": "Pas de notifications",
+    "noMessages": "Pas de messages",
+    "english": "Anglais",
+    "french": "Français",
+    "like": "Aimer",
+    "comment": "Commenter",
+    "view": "Voir",
+    "labTests": "Analyse de laboratoire",
+    "imagery": "Résultats d'imagerie",
+    "functionalExploration": "Exploration fonctionnelle",
+    "settings": "Paramètres",
+    "imageryResults": "Résultats d'imagerie",
+    "labTest": "Tests de laboratoire",
+
+    "appTitle": "PDMD",
+    "publicationText": "Texte concernant la publication...",
+    "laboratoryResults": "Résultats de laboratoire",
+    "prescriber": "Prescripteur",
+    "fileNumber": "Dossier N°",
+    "patient": "Patient",
+    "sampleDate": "Date de prélèvement",
+    "age": "Âge",
+    "sex": "Sexe",
+    "printDate": "Date d'impression",
+    "download": "Télécharger",
+    "results": "Résultats",
+    "on": "le",
+    "analysis": "Analyses",
+    "result": "Résultat",
+    "unit": "Unités",
+    "referenceValue": "Valeur de référence",
+
+
+    "date": "Date",
+
+    "birthDate": "Date de naissance",
+
+    "printedOn": "Imprimé le",
+    "examination": "Examen",
+    "brainMRI": "IRM Cérébral avec Injection",
+    "indication": "Indication",
+    "technique": "Technique",
+
+    "conclusion": "Conclusion",
+
+
+
+    "eeg": "Électroencéphalogramme (EEG)",
+    "ionicTrouble": "Examen des troubles ioniques",
+
+    "index": "Indice"
+
+  }
+  

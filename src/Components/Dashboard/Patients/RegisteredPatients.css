@@ -1,0 +1,109 @@
+/* RegisteredPatients.css */
+.rp-transactions-list-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.rp-transactions-list-container h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.rp-blue-line {
+    border: 2px solid #007bff;
+    margin-bottom: 20px;
+}
+
+.rp-transaction-filter-form {
+    margin-bottom: 20px;
+}
+
+/* Form inputs */
+/* Optional adjustments if you want custom padding */
+.rp-form-control {
+    padding: 6px 12px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+
+/* Buttons */
+.rp-form-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.rp-form-buttons .rp-btn {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+.rp-form-buttons .rp-btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.rp-form-buttons .rp-btn-secondary:hover {
+    background-color: #6c757d;
+}
+
+/* Results table */
+.rp-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rp-table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.rp-table th, .rp-table td {
+    padding: 12px;
+    text-align: center;
+}
+
+.rp-table th {
+    background-color: #f8f9fa;
+}
+
+/* Specific alignment */
+.rp-table .rp-text-left {
+    text-align: left;
+}
+
+.rp-table .rp-text-right {
+    text-align: right;
+}
+
+/* Results container */
+.rp-results-container {
+    text-align: center;
+}
+
+.rp-total-commission-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 1.8em;
+    color: black;
+}
+
+.rp-total-label {
+    margin-right: 5px;
+}
+
+.rp-total-value {
+    color: #020305;
+}

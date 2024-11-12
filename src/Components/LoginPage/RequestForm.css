@@ -1,0 +1,146 @@
+/* Container for RequestForm to scope styles */
+.request-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px; /* Limit the form width on larger screens */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.request-form-container h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Input field styling */
+.request-form-container .input-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.request-form-container .input-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.request-form-container .input-group input,
+.request-form-container .input-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Buttons styling */
+.request-form-container .button-group {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px; /* Reduced gap to fit buttons on smaller screens */
+}
+
+.request-form-container .cancel-button,
+.request-form-container .submit-button {
+    flex: 1; /* Each button will take equal space */
+    padding: 12px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.request-form-container .cancel-button {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    color: #333;
+}
+
+.request-form-container .cancel-button:hover {
+    background-color: #d9534f;
+    color: white;
+}
+
+.request-form-container .submit-button {
+    background-color: #007bff;
+    border: none;
+    color: white;
+}
+
+.request-form-container .submit-button:hover {
+    transform: translateY(-5px);
+    background-color: #0056b3;
+}
+
+/* Success message styling */
+.request-form-container .success-message {
+    color: #043692;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    animation: fadeOut 6s forwards;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .request-form-container {
+        padding: 15px;
+    }
+
+    .request-form-container h2 {
+        font-size: 1.3rem; /* Reduce font size */
+        margin-bottom: 15px;
+    }
+
+    .request-form-container .input-group input,
+    .request-form-container .input-group textarea {
+        padding: 8px; /* Smaller padding */
+        font-size: 0.9rem; /* Reduce font size */
+    }
+
+    /* Stack buttons vertically on smaller screens */
+    .request-form-container .button-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .request-form-container .cancel-button,
+    .request-form-container .submit-button {
+        width: 100%;
+        font-size: 1rem; /* Adjust font size */
+    }
+}
+
+/* Media query for extra small screens */
+@media (max-width: 480px) {
+    .request-form-container {
+        padding: 10px;
+    }
+
+    .request-form-container h2 {
+        font-size: 1.2rem;
+    }
+
+    .request-form-container .input-group input,
+    .request-form-container .input-group textarea {
+        padding: 6px;
+        font-size: 0.85rem;
+    }
+
+    .request-form-container .cancel-button,
+    .request-form-container .submit-button {
+        padding: 10px;
+    }
+}

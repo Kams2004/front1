@@ -1,0 +1,60 @@
+/* src/Components/Accountant/AccountantSidebar.css */
+
+.accountant-sidebar {
+  background-color: #424242;
+  color: white;
+  padding: 20px;
+  position: fixed;
+  top: 70px;
+  bottom: 0;
+  width: 80px;
+  transition: width 0.3s ease;
+}
+
+.accountant-sidebar.expanded {
+  width: 250px;
+}
+
+/* User Profile */
+.accountant-user-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.accountant-user-profile {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.accountant-user-info {
+  text-align: center;
+  margin-top: 10px;
+  color: #ccc;
+}
+
+/* Sidebar Navigation */
+.accountant-sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.accountant-sidebar-nav li {
+  padding: 15px 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.accountant-sidebar-nav li:hover {
+  background-color: #1e88e5;
+}
+
+.accountant-sidebar-nav i {
+  font-size: 1.5rem;
+  margin-right: 15px;
+}

@@ -1,0 +1,58 @@
+/* AccountantReportsList.css */
+
+.reports-list-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    margin: 0 auto;
+}
+
+.blue-line {
+    border-top: 2px solid #007bff;
+    margin-bottom: 20px;
+}
+
+.date-inputs .form-group {
+    margin-right: 1rem;
+}
+
+.start-date-field,
+.end-date-field {
+    margin-right: 20px; /* Adjust to control spacing */
+}
+
+.form-buttons .btn {
+    margin-left: 5px;
+}
+
+.summary-container,
+.detailed-container {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    flex: 1;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.vertical-separator {
+    width: 3px;
+    background-color: black;
+    border-radius: 2px;
+    margin: 0 10px;
+}
+/* .bold-text {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: black;
+} */
+
+.total-commission {
+    text-align: right;
+    font-weight: bold;
+    font-size: 1rem;
+    color: black;
+    margin-top: 10px;
+}

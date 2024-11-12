@@ -1,0 +1,133 @@
+/* Grouping container for 5 and 6 */
+.container-group {
+  display: flex;
+  flex-direction: column; /* Stacks them vertically */
+  flex: 1; /* Same width as other containers */
+  gap: 0.5rem; /* Adds some space between 5 and 6 */
+}
+
+/* Small Container Styles */
+.small-container {
+  background-color: #ffffff;
+  padding: 1.5rem; 
+  border: 1px solid #ccc;
+  text-align: center; /* Center align text */
+  border-radius: 8px;
+  flex: 1;
+  min-width: calc(20% - 1rem); /* 5 containers per row, with space */
+  box-sizing: border-box;
+  margin-bottom: 1rem; /* Space below the containers */
+  min-height: 50px; /* Set the minimum height for all small containers */
+  display: flex; /* Use flexbox for alignment */
+  flex-direction: row; /* Align items horizontally */
+  align-items: center; /* Center items vertically */
+}
+
+/* Specific styles for container 5 */
+.small-container-5, .small-container-6 {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  padding: 1rem; /* Add padding for better spacing */
+  border-radius: 8px;
+}
+.container {
+  background-color: #ffffff; /* Use a more distinct background color */
+  padding: 2.5rem; /* Increase padding for more content space */
+  border: 1px solid #ccc;
+  text-align: center;
+  border-radius: 8px;
+  flex: 1;
+  position: relative;
+  min-height: 30px; /* Ensure a minimum height for better visual balance */
+}
+
+.wide-container {
+  background-color: #ffffff; /* Use a more distinct background color */
+  padding: 2.5rem; /* Increase padding for more content space */
+  width: 100%; /* Ensure it takes full width */
+  border: 1px solid #ccc;
+  text-align: center;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Increase shadow for better separation */
+  min-height: 30px; /* Ensure a minimum height for better visual balance */
+}
+
+/* Side-by-Side Layout */
+.side-by-side {
+  display: flex;
+  gap: 1.5rem; /* Increase gap between side-by-side containers */
+}
+
+/* Containers in Side-by-Side Layout */
+.side-by-side .container {
+  flex: 1; /* Each takes half the width */
+  margin-bottom: 0; /* Remove bottom margin */
+  margin-top: 1%;
+}
+
+/* Specific colors for each icon */
+.users-icon { color: #007bff; } /* Blue */
+.groups-icon { color: #28a745; } /* Green */
+.doctors-icon { color: #dc3545; } /* Red */
+.requests-icon { color: #ffc107; } /* Yellow */
+.patients-icon { color: #17a2b8; } /* Cyan */
+.prescriptions-icon { color: #6f42c1; } /* Purple */
+/* Text container for title and value */
+.text-container {
+  margin-left: 1rem; /* Space between icon and text */
+}
+
+/* Center title and value styling */
+.title {
+  font-size: 1.25rem; /* Title font size */
+  margin: 0; /* Remove margin for title */
+}
+
+.value {
+  font-size: 1.75rem; /* Larger value font size */
+  font-weight: bold; /* Make value bold */
+  margin: 0.5rem 0; /* Space above and below value */
+}
+.small-container i {
+  font-size: 3rem; /* Increase icon size */
+  margin-bottom: 0.5rem; /* Space between icon and value */
+}
+
+.text-container {
+  margin-left: 1rem; /* Space between icon and text */
+  display: flex;
+  flex-direction: column; /* Stack title and value vertically */
+  align-items: flex-start; /* Align items to the left */
+}
+/* Container for buttons */
+.action-buttons {
+  display: flex; /* Use flexbox to align buttons horizontally */
+  align-items: center; /* Center align vertically */
+}
+
+/* Button Styles */
+.action-button {
+  padding: 0.5rem 1rem; /* Add padding for the buttons */
+  border: none; /* Remove border */
+  border-radius: 20px; /* Rounded corners */
+  color: #ffffff; /* Text color */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 0.875rem; /* Font size for the buttons */
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Transition for hover effects */
+}
+
+/* Specific button styles */
+.validate-button {
+  background-color: #28a745; /* Green background for validate */
+  margin-right: 0.5rem; /* Space between buttons */
+}
+
+.decline-button {
+  background-color: #dc3545; /* Red background for decline */
+}
+
+/* Hover effects */
+.action-button:hover {
+  transform: scale(1.05); /* Scale up on hover */
+}

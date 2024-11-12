@@ -1,0 +1,288 @@
+/* src/Components/Body/Body.css */
+/* src/Components/Body/Body.css */
+
+.dashboard {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem; /* Add space between the header and the content */
+}
+
+/* Other styles remain the same */
+
+
+/* Top Row Layout */
+.top-row {
+  display: flex;
+  gap: 1rem; /* Increase gap between containers */
+  /* margin-bottom: 1.5rem; Increase margin below top row */
+}
+
+/* Containers in Top Row */
+.container1 {
+  background-color: #ffffff; /* Use a more distinct background color */
+  padding: 2.5rem; /* Increase padding for more content space */
+  border: 1px solid #ccc;
+  text-align: center;
+  border-radius: 8px;
+  flex: 1;
+  position: relative;
+  min-height: 250px; /* Ensure a minimum height for better visual balance */
+}
+
+/* Wide Container in Bottom Row */
+.wide-container {
+  background-color: #ffffff; /* Use a more distinct background color */
+  padding: 2.5rem; /* Increase padding for more content space */
+  width: 100%; /* Ensure it takes full width */
+  border: 1px solid #ccc;
+  text-align: center;
+  /* margin-bottom: 1.5rem; Increase margin below wide container */
+  border-radius: 8px;
+  position: relative;
+}
+
+/* Side-by-Side Layout */
+.side-by-side {
+  display: flex;
+  margin-top: 1%;
+  gap: 1.5rem; /* Increase gap between side-by-side containers */
+}
+
+/* Containers in Side-by-Side Layout */
+.side-by-side .container {
+  flex: 1; /* Each takes half the width */
+  margin-bottom: 0; /* Remove bottom margin */
+  min-height: 0px; /* Ensure a minimum height for better visual balance */
+  margin-top: 1%;
+}
+
+/* Common Container Styles */
+.transactions-container,
+.patients-container,
+.examinations-container,
+.weekly-revenue-container,
+.status-by-channel-container,
+.wide-container {
+  background-color: #ffffff; /* Use a more distinct background color */
+  
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Increase shadow for better separation */
+}
+
+/* Reload Icon */
+.reload-icon {
+  position: absolute;
+  top: 15px; /* Increase top position for better visual balance */
+  right: 15px; /* Increase right position for better visual balance */
+  font-size: 1.8rem; /* Increase icon size */
+  cursor: pointer;
+  color: #1bd19a; /* Match the color with your theme */
+}
+/* src/Components/Body/containers.css */
+/* src/Components/Body/containers.css */
+.examinations-container {
+  position: relative;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.reload-icon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #4caf50; /* Green color for the reload icon */
+}
+
+h2 {
+  margin-bottom: 1rem;
+}
+
+.progress-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-circle {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.progress-svg {
+  transform: rotate(-90deg);
+}
+
+.progress-bg {
+  fill: none;
+  stroke: #e0e0e0; /* Light grey background for the circle */
+  stroke-width: 10px;
+}
+
+.progress-bar {
+  fill: none;
+  stroke: #4caf50; /* Green color for progress bar */
+  stroke-width: 10px;
+  stroke-linecap: round;
+  stroke-dasharray: 251.2px; /* Circumference of the circle */
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.progress-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the icon */
+  font-size: 24px;
+  color: #4caf50; /* Green color for the icon */
+}
+
+.examination-info {
+  margin-left: 1.5rem;
+  text-align: left;
+}
+
+.examination-count {
+  font-size: 2rem;
+  color: #333;
+}
+
+/* src/Components/Body/containers.css */
+.patients-container {
+  position: relative;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.reload-icon-Patient{
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #f44336; /* Red color for the reload icon */
+}
+
+h2 {
+  margin-bottom: 1rem;
+}
+
+.progress-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-circle-Patient{
+  position: relative;
+  width: 100px; /* Diameter of the circle */
+  height: 100px; /* Diameter of the circle */
+}
+
+.progress-svg {
+  transform: rotate(-90deg); /* Rotate to start the progress from the top */
+}
+
+.progress-bg {
+  fill: none;
+  stroke: #e0e0e0; /* Light grey background for the circle */
+  stroke-width: 10px;
+}
+
+.progress-bar-Patient{
+  fill: none;
+  stroke: #f44336; /* Red color for progress bar */
+  stroke-width: 10px;
+  stroke-linecap: round; /* Rounded end for the stroke */
+  stroke-dasharray: 282.6px; /* Circumference of the circle (2 * π * r) */
+  stroke-dashoffset: 0; /* Set to zero initially */
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.progress-icon-Patient{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the icon */
+  font-size: 24px;
+  color: #f44336; /* Red color for the icon */
+}
+
+.patients-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.patients-count {
+  font-size: 2rem;
+  color: #333;
+}
+
+.patients-text {
+  font-size: 1rem;
+  color: #333;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .top-row {
+    flex-direction: column;
+  }
+  .side-by-side {
+    flex-direction: column;
+  }
+}
+
+
+.content-container {
+  margin-top: 50px;
+  margin-left: 75px;
+  padding: 1rem;
+  flex-grow: 1;
+  transition: margin-left 0.3s ease-in-out;
+  overflow-y: auto; /* Allow vertical scrolling */
+}
+
+.sidebar-container.collapsed ~ .content-container {
+  margin-left: 80px; /* Adjust to match collapsed sidebar width */
+}
+.content-container {
+  margin-top: 50px;
+  margin-left: 75px;
+  padding: 1rem;
+  flex-grow: 1;
+  transition: margin-left 0.3s ease-in-out;
+  overflow-y: auto; /* Allow vertical scrolling */
+}
+
+.sidebar-container.collapsed ~ .content-container {
+  margin-left: 80px; /* Adjust to match collapsed sidebar width */
+}
+
+.transactions-page-container {
+  padding: 1rem;
+}
+/* src/Components/Body/Body.css */
+
+.toggle-amount-icon {
+  font-size: 1.5rem; /* Size of the icon */
+  cursor: pointer; /* Change cursor to pointer */
+  color: #1a0935; /* Color to match theme */
+  transition: color 0.3s; /* Transition for hover effect */
+}
+
+.toggle-amount-icon:hover {
+  color: #1a0935; /* Darker shade on hover */
+}

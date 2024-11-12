@@ -1,0 +1,109 @@
+.tl-transactions-list-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.tl-transactions-list-container h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.tl-blue-line {
+    border: 2px solid #007bff;
+    margin-bottom: 20px;
+}
+
+.tl-transaction-filter-form {
+    margin-bottom: 20px;
+}
+
+/* Form inputs */
+.tl-form-control {
+    border-radius: 5px;
+    padding: 6px 12px;
+    margin-bottom: 10px;
+}
+
+/* Buttons */
+.tl-form-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.tl-form-buttons .tl-btn {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+.tl-form-buttons .tl-btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.tl-form-buttons .tl-btn-secondary:hover {
+    background-color: #6c757d;
+}
+
+/* Results table */
+.tl-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tl-table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.tl-table th, .tl-table td {
+    padding: 12px;
+    text-align: center;
+}
+
+.tl-table th {
+    background-color: #f8f9fa;
+}
+
+.tl-results-container {
+    text-align: center;
+}
+
+.tl-no-padding {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.tl-text-left {
+    text-align: left;
+}
+
+.tl-text-right {
+    text-align: right;
+}
+
+.tl-total-commission-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 1.8em;
+    color: black;
+}
+
+.tl-total-label {
+    margin-right: 5px;
+}
+
+.tl-total-value {
+    color: #020305;
+}

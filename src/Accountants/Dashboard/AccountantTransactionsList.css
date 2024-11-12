@@ -1,0 +1,198 @@
+.transactions-list-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.transactions-list-container h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.blue-line {
+    border: 2px solid #007bff;
+    margin-bottom: 20px;
+}
+
+.transaction-filter-form {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Form inputs */
+.form-control {
+    border-radius: 5px;
+    padding: 6px 12px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+/* Buttons */
+.form-buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.form-buttons .btn {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+.form-buttons .btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+.form-buttons .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.form-buttons .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+}
+
+.form-buttons .btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Results table */
+.accountant-transactions-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.accountant-transactions-table th, .accountant-transactions-table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.accountant-transactions-table th {
+    background-color: #f8f9fa;
+}
+
+.accountant-transactions-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.results-container {
+    text-align: center;
+    font-style: italic;
+    color: #666;
+}
+
+.no-padding {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+/* src/Components/Accountant/AccountantTransactionsList.css */
+
+/* Form layout with labels above inputs, aligned properly */
+.transaction-filter-form .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .transaction-filter-form .form-group {
+    flex: 1;
+    min-width: 180px;
+  }
+  
+  .transaction-filter-form {
+    margin-bottom: 20px;
+  }
+  /* src/Components/Accountant/Body/AccountantTransactionsList.css */
+
+.form-buttons .btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
+
+.form-buttons .btn-danger:hover {
+    background-color: #c82333;
+}
+.suggestions-dropdown {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    max-height: 100px;
+    overflow-y: auto;
+    width: 24.5%; /* Matches input field width */
+    z-index: 1000;
+  }
+  
+  .suggestion-item {
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .suggestion-item:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .scrollable-hint {
+    text-align: center;
+    font-size: 0.9em;
+    color: #888;
+    padding: 5px;
+  }
+/* Position the total commission text at the bottom right */
+.total-commission {
+    text-align: right;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+/* Style for pagination controls */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 10px;
+  }
+  
+  .pagination-controls .btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .pagination-controls .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  .pagination-controls .btn-disabled {
+    background-color: #cccccc;
+    color: #888888;
+    cursor: not-allowed;
+  }
+  

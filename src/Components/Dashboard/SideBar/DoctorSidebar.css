@@ -1,0 +1,176 @@
+/* DoctorSidebar.css */
+
+.doctor-sidebar-containers {
+  position: fixed;
+  top: 85px;
+  left: 10px;
+  background-color: #292b2c;
+  border-radius: 10px;
+  transition: width 0.3s ease-in-out;
+  z-index: 1000;
+  overflow: hidden;
+  bottom: 10px;
+  padding: 10px;
+}
+
+
+.doctor-warp {
+  white-space: nowrap;
+}
+
+.doctor-collapsed {
+  width: 80px;
+}
+
+.doctor-expanded {
+  width: 250px;
+}
+
+/* Sidebar content styling */
+.doctor-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  overflow: hidden;
+  color: white;
+}
+
+/* Logo styling */
+.doctor-logo-container {
+  margin: 20px 0;
+}
+
+.doctor-user-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+/* User Profile */
+.doctor-user-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.doctor-user-profile {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.doctor-user-info {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.doctor-user-info p {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.doctor-user-info small {
+  color: #ccc;
+}
+
+/* Sidebar Nav */
+.doctor-sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.doctor-sidebar-nav li {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.doctor-sidebar-nav li:hover {
+  background-color: #4caf50;
+}
+
+.doctor-sidebar-nav i {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.doctor-sidebar-nav span {
+  margin-left: 20px;
+  font-size: 1.2rem;
+}
+
+/* Expanded and Collapsed text behavior */
+.doctor-collapsed span {
+  display: none;
+}
+
+.doctor-expanded span {
+  display: inline-block;
+}
+
+/* Block display */
+.doctor-block {
+  display: block;
+  text-align: center;
+}
+
+@media screen and (max-width: 472px) {
+  .doctor-sidebar-containers {
+      right: 10px;
+      top: initial;
+  }
+
+  .doctor-sidebar-nav ul {
+      display: flex;
+  }
+
+  .doctor-expanded {
+      width: 100%;
+  }
+
+  .doctor-block {
+      display: none;
+  }
+
+  .doctor-sidebar-containers {
+      padding: 0px;
+  }
+}
+.doctor-initials-profile {
+  width: 70px;
+  height: 70px;
+  background-color: #525df0;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease-in-out;
+}
+.doctor-user-info p {
+  font-size: 1.2rem;
+  color: white;
+  margin: 5px 0;
+}
+.doctor-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  color: white;
+}
+.doctor-welcome-text {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+  color: #f8f9fa;
+}

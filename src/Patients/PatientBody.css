@@ -1,0 +1,91 @@
+/* PatientBodyWide.css */
+
+.patient-body-wide {
+    padding: 20px; /* Add some padding around the content */
+}
+
+.container-grid-wide {
+    display: grid; /* Use CSS Grid layout */
+    grid-template-columns: repeat(3, 1fr); /* Create 3 columns */
+    gap: 20px; /* Space between the containers */
+}
+
+.container-wide {
+    background-color: #f8f9fa; /* Light background color */
+    border: 1px solid #ced4da; /* Border for the containers */
+    border-radius: 10px; /* Slight rounding of corners */
+    padding: 20px; /* Padding inside the containers */
+    text-align: center; /* Center the text */
+    font-size: 1.2rem; /* Font size */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+    transition: transform 0.2s; /* Transition for hover effect */
+}
+
+.container-wide:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.icon-wide {
+    font-size: 3rem; /* Icon size */
+    color: #007bff; /* Icon color */
+    margin-bottom: 10px; /* Space between icon and text */
+}
+
+/* Header for containers */
+.header-container-wide {
+    display: flex; /* Flexbox layout for header */
+    align-items: center; /* Align items in the center vertically */
+    justify-content: space-between; /* Space out items */
+    margin-bottom: 10px; /* Space below header */
+}
+
+.header-logo-wide {
+    width: 40px; /* Set width for logo */
+    height: 40px; /* Set height for logo */
+    border-radius: 50%; /* Make logo circular */
+    margin-right: 10px; /* Space between logo and text */
+}
+
+.header-text-wide {
+    text-align: left; /* Align text to the left */
+}
+
+.header-icon-wide {
+    font-size: 1.5rem; /* Icon size for the three dots */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+/* Image field */
+/* PatientBodyWide.css */
+
+/* Other existing styles... */
+
+.image-field-wide {
+    height: 150px; /* Set a height for the image field */
+    background-color: #e9ecef; /* Placeholder color for the image */
+    background-size: cover; /* Make sure the image covers the area */
+    background-position: center; /* Center the image */
+    border-radius: 8px; /* Rounded corners */
+    margin-bottom: 10px; /* Space below image */
+}
+
+
+/* Publication text */
+.publication-text-wide {
+    margin-bottom: 10px; /* Space below publication text */
+}
+
+/* Interaction container */
+.interaction-container-wide {
+    display: flex; /* Flexbox layout for interaction items */
+    justify-content: space-between; /* Space between items */
+}
+
+.interaction-item-wide {
+    display: flex; /* Flexbox layout for each interaction item */
+    align-items: center; /* Center align the items */
+}
+
+.interaction-item-wide i {
+    margin-right: 5px; /* Space between icon and text */
+}

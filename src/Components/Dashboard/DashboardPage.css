@@ -1,0 +1,175 @@
+/* Dashboard Layout */
+.dashboard-page {
+  display: flex;
+  flex-direction: column;
+  background-color: #f0f2f5; /* Ensure background color for the page */
+  position: relative; /* To position the watermark */
+  min-height: 100vh;
+}
+
+/* Add this for watermark styling */
+.watermark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./pngegg.png'); /* Adjust the path as needed */
+  background-size: contain; /* Ensure the image scales appropriately */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  background-position: center; /* Center the image */
+  opacity: 0.1; /* Make the watermark semi-transparent */
+  pointer-events: none; /* Allow clicks to pass through */
+  z-index: 0; /* Ensure it's behind other content */
+}
+
+
+.header {
+  width: 100%;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+}
+
+.main-content {
+  margin-top: 50px;
+  margin-left: 75px;
+  padding: 1rem;
+  flex-grow: 1;
+  transition: margin-left 0.3s ease-in-out;
+  overflow-y: auto; /* Allow vertical scrolling */
+ 
+}
+
+/* .dashboard-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  flex-grow: 1;
+} */
+
+/* Sidebar */
+.sidebar-container {
+  position: fixed;
+  top: 70px; /* Offset from header */
+  left: 0; /* Align to the left of the viewport */
+  background-color: #292b2c;
+  border-radius: 10px;
+  transition: width 0.3s ease-in-out;
+  height: calc(100vh - 70px); /* Full height minus header space */
+  width: 250px; /* Default expanded width */
+  z-index: 1000; /* Ensure the sidebar is above other content */
+}
+.sidebar-container.collapsed ~ .main-content {
+  margin-left: 80px; /* Adjust to match collapsed sidebar width */
+}
+.sidebar-container.collapsed {
+  width: 80px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  overflow: hidden;
+  color: white;
+}
+
+/* Full Width Containers */
+.full-width-container, .weekly-revenue-container, .status-by-channel-container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+}
+
+/* Containers in the Dashboard Body */
+.transactions-container {
+  background-color: white;
+  border-radius: 10px;
+  height: 100px;
+  width: calc(25% - 0.5rem); /* Adjust width for spacing */
+}
+
+.right-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.patients-container, .examinations-container {
+  background-color: white;
+  border-radius: 10px;
+  height: 100px;
+  width: calc(100% - 0.5rem); /* Full width for smaller screens */
+}
+
+.full-width-container {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.weekly-revenue-container, .status-by-channel-container {
+  width: calc(50% - 0.5rem); /* Half width for horizontal layout */
+}
+
+@media (max-width: 1200px) {
+  .transactions-container, .right-container, .weekly-revenue-container, .status-by-channel-container {
+    width: 100%;
+  }
+}
+
+.reload-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #4caf50;
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media screen and (max-width: 472px) {
+ 
+  .main-content {
+    margin-left: 0px;
+    margin-bottom:90px;
+  }
+}

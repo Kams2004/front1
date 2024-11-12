@@ -1,0 +1,144 @@
+/* Unique class for the Patient Header component */
+.patient-dashboard-header {
+  background-color: #f8f9fa;
+  height: 70px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Logo styling */
+.patient-logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.patient-dashboard-logo {
+  height: 70px;
+  width: auto;
+}
+
+/* Center search bar */
+.patient-search-bar-container {
+  max-width: 600px;
+  position: relative;
+}
+
+/* Search input styling */
+.patient-search-bar {
+  height: 40px;
+  padding-left: 30px;
+  transition: box-shadow 0.3s ease;
+}
+
+.patient-search-bar:focus {
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.patient-max-width {
+  max-width: 800px;
+}
+
+.patient-search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  pointer-events: none;
+}
+
+/* Icons container and styling */
+.patient-icons-container {
+  display: flex;
+  align-items: center;
+}
+
+.patient-icon {
+  font-size: 1.5rem;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.patient-icon:hover {
+  color: #007bff; /* Change color on hover */
+}
+
+.patient-icon-spacing {
+  margin-right: 20px !important;
+  display: block;
+}
+
+/* Shake animation */
+.patient-shake-icon:hover {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 0); }
+  25% { transform: translate(-1px, 0); }
+  50% { transform: translate(1px, 0); }
+  75% { transform: translate(-1px, 0); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Popover styling */
+.patient-popover-container {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  z-index: 1000;
+  min-width: 150px;
+  border-radius: 0.5rem; /* Rounded corners */
+}
+
+.patient-popover-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.patient-popover-content p {
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.patient-popover-content p:hover {
+  background-color: #f0f0f0; /* Highlight on hover */
+}
+
+/* Language Dropdown styling */
+.patient-language-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 10;
+  width: 150px;
+}
+
+.patient-language-dropdown p {
+  cursor: pointer;
+  margin: 5px 0;
+  padding: 5px 10px;
+  color: #333;
+}
+
+.patient-language-dropdown p:hover {
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .patient-icon-spacing {
+    display: none;
+  }
+}

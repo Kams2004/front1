@@ -1,0 +1,52 @@
+{
+    "searchPlaceholder": "Search",
+    "noNotifications": "No notifications",
+    "noMessages": "No messages",
+    "english": "English",
+    "french": "French",
+    "like": "Like",
+    "comment": "Comment",
+    "view": "View",
+    "labTests": "Lab Test",
+    "imagery": "Imagery results",
+    "functionalExploration": "Functional Exploration",
+    "settings": "Settings",
+    "imageryResults": "Imagery results",
+    "labTest": "Lab Test",
+    
+    "appTitle": "PDMD",
+    "publicationText": "Text concerning the publication...",
+    "laboratoryResults": "Laboratory Results",
+    "prescriber": "Prescriber",
+    "fileNumber": "File No.",
+    "patient": "Patient",
+    "sampleDate": "Sample Date",
+    "age": "Age",
+    "sex": "Sex",
+    "printDate": "Print Date",
+    "download": "Download",
+    "results": "Results",
+    "on": "on",
+    "analysis": "Analysis",
+    "result": "Result",
+    "unit": "Unit",
+    "referenceValue": "Reference Value",
+
+    "date": "Date",
+   
+    "birthDate": "Date of Birth",
+
+    "printedOn": "Printed On",
+    "examination": "Examination",
+    "brainMRI": "Brain MRI with Injection",
+    "indication": "Indication",
+    "technique": "Technique",
+ 
+    "conclusion": "Conclusion",
+
+
+    "eeg": "Electroencephalogram (EEG)",
+    "ionicTrouble": "Ionic Trouble Examination",
+  
+    "index": "Index"
+  }
