@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './AccountantReportsList.css';
 import config from '../../../config';
+import { useTranslation } from "react-i18next";
 
 const AccountantReportsList = ({ selectedReportType }) => {
   const [startDate, setStartDate] = useState('');
+  const { t } = useTranslation();
   const [endDate, setEndDate] = useState('');
   const [doctors, setDoctors] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -142,7 +144,7 @@ const AccountantReportsList = ({ selectedReportType }) => {
 
   return (
     <div className="reports-list-container">
-      <h2>Accountant Reports</h2>
+      <h2>{t("accountantReports.title")}</h2>
       <div className="blue-line mb-4"></div>
 
       {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
@@ -150,7 +152,7 @@ const AccountantReportsList = ({ selectedReportType }) => {
       <form className="report-filter-form mb-3 d-flex align-items-center justify-content-between">
         <div className="date-inputs d-flex align-items-center">
           <div className="form-group start-date-field">
-            <label htmlFor="start-date">Start Date</label>
+            <label htmlFor="start-date">{t("accountantReports.startDate")}</label>
             <input
               type="date"
               className="form-control"
@@ -160,7 +162,7 @@ const AccountantReportsList = ({ selectedReportType }) => {
             />
           </div>
           <div className="form-group end-date-field">
-            <label htmlFor="end-date">End Date</label>
+            <label htmlFor="end-date">{t("accountantReports.endDate")}</label>
             <input
               type="date"
               className="form-control"
@@ -171,37 +173,43 @@ const AccountantReportsList = ({ selectedReportType }) => {
           </div>
         </div>
         <div className="form-buttons d-flex">
-          <button type="button" className="btn btn-primary mr-2" onClick={handleGenerate}>Generate</button>
-          <button type="button" className="btn btn-secondary mr-2" onClick={handleReset}>Reset</button>
-          <button type="button" className="btn btn-danger" onClick={handlePrint}>Print</button>
+          <button type="button" className="btn btn-primary mr-2" onClick={handleGenerate}>
+            {t("accountantReports.generate")}
+          </button>
+          <button type="button" className="btn btn-secondary mr-2" onClick={handleReset}>
+            {t("accountantReports.reset")}
+          </button>
+          <button type="button" className="btn btn-danger" onClick={handlePrint}>
+            {t("accountantReports.print")}
+          </button>
         </div>
       </form>
 
       <div className="d-flex align-items-stretch mb-3">
         <div className="summary-container p-3 flex-fill">
-          <h5>Doctors Summary</h5>
+          <h5>{t("accountantReports.doctorSummary")}</h5>
           <div className="input-group mb-3">
             <input
               type="text"
               className="form-control"
-              placeholder="Search Doctor"
+              placeholder={t("accountantReports.searchDoctor")}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
             <div className="input-group-append">
               <button className="btn btn-outline-secondary btn-search" type="button">
-                <i className="bi bi-search"></i> Search
+                <i className="bi bi-search"></i> {t("actions.search")}
               </button>
             </div>
           </div>
           <table className="table table-striped">
             <thead>
               <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Specialty</th>
+                <th>{t("accountantReports.firstName")}</th>
+                <th>{t("accountantReports.lastName")}</th>
+                <th>{t("accountantReports.specialty")}</th>
                 <th>
-                  Select ({selectedDoctors.length})
+                  {t("accountantReports.select")} ({selectedDoctors.length})
                   <input
                     type="checkbox"
                     className="form-check-input ml-2"
@@ -231,7 +239,7 @@ const AccountantReportsList = ({ selectedReportType }) => {
           </table>
           <div className="d-flex justify-content-between align-items-center mt-3">
             <div>
-              <label>Records per page:</label>
+              <label>{t("accountantReports.recordsPerPage")}</label>
               <select
                 value={recordsPerPage}
                 onChange={(e) => setRecordsPerPage(Number(e.target.value))}
@@ -249,15 +257,15 @@ const AccountantReportsList = ({ selectedReportType }) => {
                 onClick={handlePreviousPage}
                 disabled={currentPage === 1}
               >
-                Previous
+                {t("accountantReports.previous")}
               </button>
-              <span>Page {currentPage} of {totalPages}</span>
+              <span>{t("accountantReports.page", { currentPage, totalPages })}</span>
               <button
                 className="btn btn-primary mx-1"
                 onClick={handleNextPage}
                 disabled={currentPage === totalPages}
               >
-                Next
+                {t("accountantReports.next")}
               </button>
             </div>
           </div>
@@ -266,12 +274,12 @@ const AccountantReportsList = ({ selectedReportType }) => {
         <div className="vertical-separator mx-3"></div>
 
         <div className="detailed-container p-3 flex-fill">
-          <h5>Synthesis Report</h5>
+          <h5>{t("accountantReports.synthesisReport")}</h5>
           <table className="table table-bordered">
             <thead>
               <tr>
-                <th>Doctor Name</th>
-                <th>Commission</th>
+                <th>{t("accountantReports.doctorName")}</th>
+                <th>{t("accountantReports.commission")}</th>
               </tr>
             </thead>
             <tbody>
@@ -284,7 +292,7 @@ const AccountantReportsList = ({ selectedReportType }) => {
             </tbody>
           </table>
           <div className="total-commission mt-2">
-            Total Commission: {Object.values(synthesisData).reduce((sum, val) => sum + val, 0)} CFA
+            {t("accountantReports.totalCommission")}: {Object.values(synthesisData).reduce((sum, val) => sum + val, 0)} CFA
           </div>
         </div>
       </div>

@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import './AccountantTransactionsList.css';
 import config from '../../config';
+import { useTranslation } from 'react-i18next';
 
 const AccountantTransactionsList = ({ doctors, onDoctorSelect, selectedDoctorId }) => {
   const initialTransactions = [];
-
+  const { t } = useTranslation(); // Initialize translation
   const [transactions, setTransactions] = useState(initialTransactions);
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
@@ -211,16 +212,15 @@ const AccountantTransactionsList = ({ doctors, onDoctorSelect, selectedDoctorId 
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
   const currentRecords = transactions.slice(indexOfFirstRecord, indexOfLastRecord);
-
   return (
     <div className="transactions-list-container">
-      <h2>Accountant Transactions</h2>
+      <h2>{t('accountantTransactions.title')}</h2>
       <div className="blue-line"></div>
 
       <form className="transaction-filter-form">
         <div className="form-row">
           <div className="form-group">
-            <label htmlFor="start-date">Start Date</label>
+            <label htmlFor="start-date">{t('accountantTransactions.startDate')}</label>
             <input
               type="date"
               className="form-control"
@@ -230,7 +230,7 @@ const AccountantTransactionsList = ({ doctors, onDoctorSelect, selectedDoctorId 
             />
           </div>
           <div className="form-group">
-            <label htmlFor="end-date">End Date</label>
+            <label htmlFor="end-date">{t('accountantTransactions.endDate')}</label>
             <input
               type="date"
               className="form-control"
@@ -240,18 +240,19 @@ const AccountantTransactionsList = ({ doctors, onDoctorSelect, selectedDoctorId 
             />
           </div>
           <div className="form-group autocomplete">
-            <label htmlFor="doctor-name">Doctor Name</label>
+            <label htmlFor="doctor-name">{t('accountantTransactions.doctorName')}</label>
             <input
               type="text"
               className="form-control"
               id="doctor-name"
-              placeholder="Enter doctor name"
+              placeholder={t('accountantTransactions.enterDoctorName')}
               value={doctorName}
               onChange={handleDoctorInputChange}
               onFocus={() => setShowSuggestions(true)}
             />
             {showSuggestions && (
               <div className="suggestions-dropdown">
+                {/* Assuming filteredSuggestions array is available */}
                 {filteredSuggestions.map((doctor) => (
                   <div
                     key={doctor.id}
@@ -267,19 +268,19 @@ const AccountantTransactionsList = ({ doctors, onDoctorSelect, selectedDoctorId 
         </div>
         <div className="form-buttons">
           <button type="button" className="btn btn-primary" onClick={handleFilter}>
-            Search
+            {t('accountantTransactions.search')}
           </button>
           <button type="button" className="btn btn-secondary" onClick={handleReset}>
-            Reset
+            {t('accountantTransactions.reset')}
           </button>
           <button type="button" className="btn btn-danger" onClick={handlePrint}>
-            Print
+            {t('accountantTransactions.print')}
           </button>
         </div>
       </form>
 
       <div className="records-per-page">
-        <label>Records per page:</label>
+        <label>{t('accountantTransactions.recordsPerPage')}:</label>
         <select value={recordsPerPage} onChange={(e) => setRecordsPerPage(Number(e.target.value))}>
           <option value={5}>5</option>
           <option value={10}>10</option>
@@ -288,15 +289,15 @@ const AccountantTransactionsList = ({ doctors, onDoctorSelect, selectedDoctorId 
       </div>
 
       <div className="results-container">
-        <h3>Showing {transactions.length} Transactions</h3>
+        <h3>{t('accountantTransactions.showingTransactions', { count: transactions.length })}</h3>
         <table className="table table-hover accountant-transactions-table">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Patient Name</th>
-              <th>Examination</th>
-              <th>Commission</th>
-              <th>Transfer Date</th>
+              <th>{t('accountantTransactions.id')}</th>
+              <th>{t('accountantTransactions.patientName')}</th>
+              <th>{t('accountantTransactions.examination')}</th>
+              <th>{t('accountantTransactions.commission')}</th>
+              <th>{t('accountantTransactions.transferDate')}</th>
             </tr>
           </thead>
           <tbody>
@@ -312,7 +313,7 @@ const AccountantTransactionsList = ({ doctors, onDoctorSelect, selectedDoctorId 
               ))
             ) : (
               <tr>
-                <td colSpan="5" className="results-container">No transactions found</td>
+                <td colSpan="5" className="results-container">{t('accountantTransactions.noTransactionsFound')}</td>
               </tr>
             )}
           </tbody>
@@ -325,20 +326,20 @@ const AccountantTransactionsList = ({ doctors, onDoctorSelect, selectedDoctorId 
           onClick={handlePreviousPage}
           disabled={currentPage === 1}
         >
-          Previous
+          {t('accountantTransactions.previous')}
         </button>
-        <span>Page {currentPage} of {totalPages}</span>
+        <span>{t('accountantTransactions.page', { page: currentPage, total: totalPages })}</span>
         <button
           className={`btn ${currentPage === totalPages ? 'btn-disabled' : 'btn-primary'}`}
           onClick={handleNextPage}
           disabled={currentPage === totalPages}
         >
-          Next
+          {t('accountantTransactions.next')}
         </button>
       </div>
 
       <div className="total-commission">
-        <strong>Total Commission: {totalCommission.toFixed(2)}</strong>
+        <strong>{t('accountantTransactions.totalCommission')}: {totalCommission.toFixed(2)}</strong>
       </div>
     </div>
   );

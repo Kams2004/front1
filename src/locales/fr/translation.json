@@ -50,7 +50,163 @@
     "eeg": "Électroencéphalogramme (EEG)",
     "ionicTrouble": "Examen des troubles ioniques",
 
-    "index": "Indice"
+    "index": "Indice",
+
+    "patients": {
+    "title": "Patients Enregistrés",
+    "startDate": "Date de début",
+    "endDate": "Date de fin",
+    "filter": "Filtrer",
+    "reset": "Réinitialiser",
+    "showing": "Affichage de {{count}} sur {{total}} Patients",
+    "id": "ID",
+    "patientName": "Nom du Patient",
+    "examination": "Examen",
+    "commission": "Commission",
+    "transferDate": "Date de Transfert",
+    "total": "Total",
+    "previous": "Précédent",
+    "page": "Page {{page}}",
+    "next": "Suivant",
+    "error": "Erreur",
+    "close": "Fermer",
+      "registeredPatients": "Patients Enregistrés"
+  },
+  "error": {
+    "doctorIDMissing": "L'ID du médecin est manquant dans le stockage local.",
+    "fetchPatients": "Échec de la récupération des données des patients. Veuillez réessayer plus tard.",
+    "enterDates": "Veuillez entrer les dates de début et de fin pour filtrer.",
+    "fetchByDateRange": "Échec de la récupération des données par plage de dates. Veuillez réessayer plus tard.",
+        "missingDoctorId": "L'identifiant du médecin est absent du stockage local.",
+    "fetchingTransactions": "Erreur lors de la récupération des données de transactions.",
+        "fetchingPatientsData": "Erreur lors de la récupération des données des patients.",
+            "fetchingMonthlyTransactions": "Erreur lors de la récupération des transactions mensuelles.",
+                "fetchingWeeklyRevenue": "Erreur lors de la récupération des données de revenu hebdomadaire."
+  },
+
+  "sidebar": {
+    "welcome": "Bienvenue",
+    "dashboard": "Tableau de bord",
+    "registeredPatients": "Patients Enregistrés",
+  
+    "helloUser": "Bonjour",
+    "transactionList": "Liste des transactions",
+    "reports": "Rapports",
+    "settings": "Paramètres"
+  },
+  "transactions": {
+    "title": "Commissions du jour",
+    "toggleAmount": "Afficher/Masquer le montant",
+    "commissions": "Commissions",
+    "totalTransactions": "Transactions"
+  },
+ 
+  "examinations": {
+    "title": "Examens en Cours",
+    "label": "Examens"
+  },
+  "wideContainer": {
+    "title": "Transactions Mensuelles",
+    "amount": "Montant",
+    "commissions": "Commissions",
+    "transactions": "Transactions"
+  },
+  "weeklyRevenue": {
+    "title": "Revenu Hebdomadaire",
+    "label": "Revenu",
+    "mon": "Lun",
+    "tue": "Mar",
+    "wed": "Mer",
+    "thu": "Jeu",
+    "fri": "Ven",
+    "sat": "Sam",
+    "sun": "Dim"
+  },
+  "channels": {
+    "title": "Statut par Canal",
+    "label": "Canaux",
+    "direct": "Direct",
+    "socialMedia": "Médias Sociaux",
+    "searchEngine": "Moteur de Recherche",
+    "referral": "Parrainage"
+  },
+  "actions": {
+    "reloading": "Rechargement...",
+    "search": "Rechercher",
+    "generate": "Générer",
+    "reset": "Réinitialiser",
+    "print": "Imprimer",
+    "previous": "Précédent",
+    "next": "Suivant"
+  },
+  "header": {
+    "searchPlaceholder": "Recherche",
+    "noMessages": "Aucun message",
+    "english": "Anglais",
+    "french": "Français"
+  }
+,
+"accountantTransactions": {
+ "title": "Commissions du jour",
+  "startDate": "Date de début",
+  "endDate": "Date de fin",
+  "doctorName": "Nom du Médecin",
+  "enterDoctorName": "Entrez le nom du médecin",
+  "search": "Rechercher",
+  "reset": "Réinitialiser",
+  "print": "Imprimer",
+  "recordsPerPage": "Enregistrements par page",
+  "showingTransactions": "Affichage de {{count}} Transactions",
+  "id": "ID",
+  "patientName": "Nom du Patient",
+  "examination": "Examen",
+  "commission": "Commission",
+  "transferDate": "Date de Transfert",
+  "noTransactionsFound": "Aucune transaction trouvée",
+  "previous": "Précédent",
+  "page": "Page {{page}} sur {{total}}",
+  "next": "Suivant",
+  "totalCommission": "Commission Totale"
+},
+"accountantReports": {
+  "title": "Rapports du Comptable",
+  "startDate": "Date de début",
+  "endDate": "Date de fin",
+  "generate": "Générer",
+  "reset": "Réinitialiser",
+  "print": "Imprimer",
+  "doctorSummary": "Résumé des Médecins",
+  "searchDoctor": "Rechercher un Médecin",
+  "search": "Rechercher",
+  "firstName": "Prénom",
+  "lastName": "Nom",
+  "specialty": "Spécialité",
+  "select": "Sélectionner",
+  "recordsPerPage": "Enregistrements par page",
+  "previous": "Précédent",
+  "page": "Page {{currentPage}} sur {{totalPages}}",
+  "next": "Suivant",
+  "synthesisReport": "Rapport de Synthèse",
+  "doctorName": "Nom du Médecin",
+  "commission": "Commission",
+  "totalCommission": "Commission Totale",
+  "noDoctorsFound": "Aucun médecin trouvé"
+},
+
+"accountantDoctors": {
+  "title": "Médecins"
+},
+"accountantPatients": {
+  "title": "Patients"
+},
+"loading": "Chargement...",
+"userSettings": {
+  "title": "Paramètres de l'utilisateur",
+  "firstName": "Prénom",
+  "lastName": "Nom",
+  "username": "Nom d'utilisateur",
+  "email": "Email"
+}
 
   }
   

@@ -1,8 +1,11 @@
 // src/Components/Accountant/AccountantSidebar.js
+
 import React, { useState, useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 import "./AccountantSidebar.css";
 
 const AccountantSidebar = ({ onItemClick }) => {
+  const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState(false);
   const [userData, setUserData] = useState({ name: "", email: "" });
 
@@ -28,6 +31,17 @@ const AccountantSidebar = ({ onItemClick }) => {
   };
 
   const handleMouseLeave = () => setIsExpanded(false);
+  const getUserInitials = (name) => {
+    if (!name) return "U"; // Return 'U' as default if no name is provided
+  
+    return name
+      .split(" ")
+      .slice(0, 2) // Take the first two parts of the name
+      .map(part => part[0].toUpperCase()) // Get the first letter of each part
+      .join(""); // Join them together
+  };
+  
+  const userInitials = getUserInitials(userData.name);
 
   return (
     <div
@@ -35,31 +49,31 @@ const AccountantSidebar = ({ onItemClick }) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {/* User Profile */}
-      <div className="accountant-user-container">
-        <img src="USER.jpeg" alt="User" className="accountant-user-profile" />
-        {isExpanded && (
-          <div className="accountant-user-info">
-            <p>Hello, {userData.name}</p>
-            <small>{userData.email}</small>
-          </div>
-        )}
-      </div>
+     <div className="accountant-user-container">
+  <div className="accountant-user-initials">
+    {userInitials}
+  </div>
+  {isExpanded && (
+    <div className="accountant-user-info">
+      <p>{t('sidebar.helloUser')}, {userData.name || 'User'}</p>
+      <small>{userData.email || 'No Email'}</small>
+    </div>
+  )}
+</div>
 
-      {/* Sidebar Navigation */}
       <div className="accountant-sidebar-nav">
         <ul>
           <li onClick={() => onItemClick("Transactions")}>
             <i className="bi bi-file-earmark-text"></i>
-            {isExpanded && <span>Transaction List</span>}
+            {isExpanded && <span>{t('sidebar.transactionList')}</span>}
           </li>
           <li onClick={() => onItemClick("Reports")}>
             <i className="bi bi-graph-up"></i>
-            {isExpanded && <span>Reports</span>}
+            {isExpanded && <span>{t('sidebar.reports')}</span>}
           </li>
           <li onClick={() => onItemClick("Settings")}>
             <i className="bi bi-gear"></i>
-            {isExpanded && <span>Settings</span>}
+            {isExpanded && <span>{t('sidebar.settings')}</span>}
           </li>
         </ul>
       </div>

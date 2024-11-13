@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./DoctorSidebar.css";
+import { useTranslation } from 'react-i18next';
 
 const DoctorSidebar = ({ onItemClick }) => {
+  const { t } = useTranslation(); // Initialize translation hook
   const [isExpanded, setIsExpanded] = useState(false);
   const [userData, setUserData] = useState({ name: '', email: '' });
 
@@ -55,7 +57,7 @@ const DoctorSidebar = ({ onItemClick }) => {
           </div>
           {isExpanded && (
             <div className="doctor-user-info">
-              <p className="doctor-welcome-text">Welcome</p>
+              <p className="doctor-welcome-text">{t("sidebar.welcome")}</p>
               <p>{userData.name}</p>
               <small>{userData.email}</small>
             </div>
@@ -66,23 +68,23 @@ const DoctorSidebar = ({ onItemClick }) => {
           <ul>
             <li onClick={() => onItemClick("Dashboard")}>
               <i className="bi bi-house-door"></i>
-              {isExpanded && <span>Dashboard</span>}
+              {isExpanded && <span>{t("sidebar.dashboard")}</span>}
             </li>
             <li onClick={() => onItemClick("Patients")}>
               <i className="bi bi-person-lines-fill"></i>
-              {isExpanded && <span>Registered Patients</span>}
+              {isExpanded && <span>{t("sidebar.registeredPatients")}</span>}
             </li>
             {/* <li onClick={() => onItemClick("Transactions")}>
               <i className="bi bi-file-earmark-text"></i>
-              {isExpanded && <span>Transaction List</span>}
+              {isExpanded && <span>{t("sidebar.transactionList")}</span>}
             </li> */}
             {/* <li onClick={() => onItemClick("Examinations")}>
               <i className="bi bi-list-check"></i>
-              {isExpanded && <span>Examinations List</span>}
+              {isExpanded && <span>{t("sidebar.examinationsList")}</span>}
             </li> */}
             <li onClick={() => onItemClick("Settings")}>
               <i className="bi bi-gear"></i>
-              {isExpanded && <span>Settings</span>}
+              {isExpanded && <span>{t("sidebar.settings")}</span>}
             </li>
           </ul>
         </nav>

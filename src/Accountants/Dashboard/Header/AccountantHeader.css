@@ -100,3 +100,26 @@
     display: none;
   }
 }
+/* Ensure the dropdown is positioned correctly and initially hidden */
+.language-dropdown {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  z-index: 1000;
+  min-width: 150px;
+  border-radius: 0.5rem;
+  right: 0;
+  top: 100%; /* Position the dropdown below the icon */
+  opacity: 1; /* Initially visible */
+  transform: translateY(0); /* Initially in place */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Hide dropdown with CSS when showLanguageOptions is false */
+.language-dropdown.hidden {
+  opacity: 0;
+  transform: translateY(-10px); /* Move it upwards to hide */
+  pointer-events: none; /* Disable interaction when hidden */
+}

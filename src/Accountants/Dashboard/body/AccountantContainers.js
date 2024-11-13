@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import './AccountantContainers.css';
 import config from '../../../config';
 
 export const AccountantTransactionsContainer = ({ doctorId }) => {
+  const { t } = useTranslation();
   const [commission, setCommission] = useState(null);
 
   useEffect(() => {
@@ -22,16 +24,19 @@ export const AccountantTransactionsContainer = ({ doctorId }) => {
 
   return (
     <div className="accountant-small-container">
-      <h3 className="container-title">Today's Commissions</h3>
+      <h3 className="container-title">{t("accountantTransactions.title")}</h3>
       <div className="container-content">
         <i className="fas fa-wallet container-icon"></i>
-        <span className="container-value">{commission !== null ? `${commission} CFA` : "Loading..."}</span>
+        <span className="container-value">
+          {commission !== null ? `${commission} CFA` : t("loading")}
+        </span>
       </div>
     </div>
   );
 };
 
 export const AccountantDoctorsContainer = () => {
+  const { t } = useTranslation();
   const [doctorCount, setDoctorCount] = useState(null);
 
   useEffect(() => {
@@ -55,16 +60,19 @@ export const AccountantDoctorsContainer = () => {
 
   return (
     <div className="accountant-small-container">
-      <h3 className="container-title">Doctors</h3>
+      <h3 className="container-title">{t("accountantDoctors.title")}</h3>
       <div className="container-content">
         <i className="fas fa-user-md container-icon"></i>
-        <span className="container-value">{doctorCount !== null ? doctorCount : "Loading..."}</span>
+        <span className="container-value">
+          {doctorCount !== null ? doctorCount : t("loading")}
+        </span>
       </div>
     </div>
   );
 };
 
 export const AccountantPatientsContainer = ({ doctorId }) => {
+  const { t } = useTranslation();
   const [patientCount, setPatientCount] = useState(null);
 
   useEffect(() => {
@@ -76,7 +84,7 @@ export const AccountantPatientsContainer = ({ doctorId }) => {
           if (data && data.data_patients) {
             setPatientCount(data.data_patients.length);
           } else {
-            setPatientCount(0); // Default to 0 if no patients found
+            setPatientCount(0);
           }
         } catch (error) {
           console.error("Error fetching patient count:", error);
@@ -90,10 +98,12 @@ export const AccountantPatientsContainer = ({ doctorId }) => {
 
   return (
     <div className="accountant-small-container">
-      <h3 className="container-title">Patients</h3>
+      <h3 className="container-title">{t("accountantPatients.title")}</h3>
       <div className="container-content">
         <i className="fas fa-user-injured container-icon"></i>
-        <span className="container-value">{patientCount !== null ? patientCount : "Loading..."}</span>
+        <span className="container-value">
+          {patientCount !== null ? patientCount : t("loading")}
+        </span>
       </div>
     </div>
   );

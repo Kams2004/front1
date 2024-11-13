@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './AuthContext';
 import LoginPage from './Components/LoginPage/Loginpage.js';
 import DashboardPage from './Components/Dashboard/DashboardPage';
-import SignUpPage from './Components/SignUp/SignUpPage';
+// import SignUpPage from './Components/SignUp/SignUpPage';
 import DashboardPage1 from './ADMIN/Dashboard';
 import PatientDashboard from './Patients/PatientDashboard';
 import ProtectedRoute from './ProtectedRoute';
@@ -20,7 +20,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<LoginPage />} />
                     <Route path="/confirm/:token" element={<LoginPage />} /> {/* Confirmation Route */}
-                    <Route path="/signup" element={<SignUpPage />} />
+                    {/* <Route path="/signup" element={<SignUpPage />} /> */}
                     <Route 
                         path="/admin" 
                         element={

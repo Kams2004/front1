@@ -1,117 +1,122 @@
-// src/Components/Header/Header.js
-import React, { useState } from "react";
-import axios from '../../../axiosConfig'; // Use the configured axios instance
+import React, { useState, useEffect, useRef } from "react";
+import axios from '../../../axiosConfig';
 import useAuthStore from '../../../authStore';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import "./Header.css"; // CSS specific to the header
+import "./Header.css";
 import config from '../../../config';
+import { useTranslation } from 'react-i18next';
 
 const Header = ({ isProfileComplete }) => {
   const [showNotifications, setShowNotifications] = useState(false);
   const [showMessages, setShowMessages] = useState(false);
   const [showLanguageOptions, setShowLanguageOptions] = useState(false);
+  const languageRef = useRef(null); // Reference to detect clicks outside
   
-  const { clearAuth } = useAuthStore(); // Access clearAuth directly
+  const { clearAuth } = useAuthStore();
+  const { t, i18n } = useTranslation();
   const notificationCount = isProfileComplete ? 0 : 1;
 
   const handleLogout = async () => {
     try {
       await axios.post(`${config.baseURL}user/logout`);
-      
-      // Clear localStorage and cache on successful logout
       localStorage.clear();
       sessionStorage.clear();
-      
-      // Call clearAuth function to clear context data
       clearAuth();
-  
-      // Redirect to login page
       window.location.href = '/';
     } catch (error) {
       console.error('Logout failed:', error);
       alert('Failed to log out. Please try again.');
     }
   };
-  
+
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
+    setShowLanguageOptions(false); // Close dropdown after selecting a language
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (languageRef.current && !languageRef.current.contains(event.target)) {
+        setShowLanguageOptions(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
     <header className="dashboard-header d-flex justify-content-between align-items-center p-3 shadow-sm">
-      {/* PDMD Logo */}
       <div className="logo-container">
         <img src="pdmd.png" alt="PDMD Logo" className="dashboard-logo" />
       </div>
 
-      {/* Search Bar - Centered */}
       <div className="d-flex form-control search-bar rounded-pill max-w">
         <i className="mr-5 bi bi-search"></i>
         <input
           type="text"
           className="border-0 ml-5 flex-grow-1"
-          placeholder="Search"
+          placeholder={t('search_placeholder')}
         />
       </div>
 
-      {/* Icons and Logout Icon Button on the Right */}
       <div className="icons-container d-flex align-items-center">
-        {/* Account Icon */}
-        <div className="icon icon-spacing">
-          <i className="bi bi-person-circle"></i> {/* Account Icon */}
-        </div>
+        {/* <div className="icon icon-spacing">
+          <i className="bi bi-person-circle"></i>
+        </div> */}
 
-        {/* Notification Icon */}
         <div
           className={`icon icon-spacing ${notificationCount > 0 ? "shake-icon" : ""}`} 
           onMouseEnter={() => setShowNotifications(true)}
           onMouseLeave={() => setShowNotifications(false)}
           style={{ position: 'relative' }}
         >
-          <i className="bi bi-bell"></i> {/* Notification Icon */}
+          <i className="bi bi-bell"></i>
           {notificationCount > 0 && (
             <span className="notification-count">{notificationCount}</span>
           )}
           {showNotifications && notificationCount > 0 && (
             <div className="popover-container notification-popover">
               <div className="popover-content">
-                <p>You need to update your profile to access other sections.</p>
+                <p>{t('update_profile')}</p>
               </div>
             </div>
           )}
         </div>
 
-        {/* Messaging Icon */}
         <div
           className="icon icon-spacing"
           onMouseEnter={() => setShowMessages(true)}
           onMouseLeave={() => setShowMessages(false)}
         >
-          <i className="bi bi-chat-dots shake-icon"></i> {/* Messaging Icon */}
+          <i className="bi bi-chat-dots shake-icon"></i>
           {showMessages && (
             <div className="popover-container">
               <div className="popover-content">
-                <p>No messages</p>
+                <p>{t('no_messages')}</p>
               </div>
             </div>
           )}
         </div>
 
-        {/* Language Icon */}
         <div
+          ref={languageRef} // Attach ref here for detecting outside clicks
           className="icon icon-spacing"
-          onMouseEnter={() => setShowLanguageOptions(true)}
-          onMouseLeave={() => setShowLanguageOptions(false)}
+          onClick={() => setShowLanguageOptions(!showLanguageOptions)}
+          style={{ position: 'relative' }}
         >
           <i className="bi bi-translate shake-icon"></i>
           {showLanguageOptions && (
             <div className="language-dropdown popover-container">
-              <p onClick={() => console.log("English selected")}>English</p>
-              <p onClick={() => console.log("French selected")}>French</p>
+              <p onClick={() => changeLanguage("en")}>English</p>
+              <p onClick={() => changeLanguage("fr")}>Français</p>
             </div>
           )}
         </div>
 
-        {/* Logout Icon */}
         <div className="icon icon-spacing" onClick={handleLogout} title="Logout">
-          <i className="bi bi-box-arrow-right"></i> {/* Logout Icon */}
+          <i className="bi bi-box-arrow-right"></i>
         </div>
       </div>
     </header>
