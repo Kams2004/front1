@@ -1,12 +1,15 @@
 /* General styling for the login page */
+/* Background styling for infinite background effect */
 .login-page {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: url('./test1.png') no-repeat center center fixed; 
-  background-size: cover; /* Ensures the image covers the entire background */
+  min-height: 100vh; /* Ensure minimum height covers full viewport */
+  background: url('./test1.png') repeat; /* Repeats the background image */
+  background-size: cover; /* Ensures image covers the area without stretching */
+  overflow: auto; /* Allows for scrolling if content extends */
 }
+
 
 /* The login container has two sides: the image on the left and form on the right */
 .login-container {
@@ -72,6 +75,9 @@ h2, p, label, .forgot-password {
 }
 
 .role-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex: 1; /* Each button will take an equal part of the available space */
   min-width: 100px; /* Minimum width for each button */
   padding: 10px 20px;
@@ -82,6 +88,8 @@ h2, p, label, .forgot-password {
   font-size: 16px;
   font-weight: bold;
   transition: transform 0.2s ease, background-color 0.3s ease;
+  text-align: center; /* Ensures text stays centered within the button */
+  white-space: nowrap; /* Prevents text wrapping */
 }
 
 .role-button.active {
@@ -288,4 +296,228 @@ h2, p, label, .forgot-password {
 .warning-icon {
   margin-right: 5px; /* Space between icon and text */
   font-size: 1.2rem; /* Adjust icon size */
+}
+/* Existing styles remain unchanged... */
+
+/* Hide image container on smaller screens */
+@media (max-width: 768px) {
+  /* Stack the login form and image on smaller screens */
+  .login-container {
+      flex-direction: column;
+      width: 90%;
+  }
+
+  .image-container {
+      display: none; /* Hide the image container on screens smaller than 768px */
+  }
+
+  .form-container {
+      padding: 20px;
+  }
+}
+@media (max-width: 800px) and (max-height: 1280px) {
+  .login-container {
+      flex-direction: column;
+      width: 90%;
+      max-width: 600px; /* Restrict max width for this resolution */
+      margin: 20px auto; /* Center container with some margin */
+  }
+
+  .image-container {
+      display: none; /* Hide the image container on smaller screens */
+  }
+
+  .form-container {
+      padding: 20px;
+  }
+
+  .role-button {
+      font-size: 14px; /* Slightly smaller text to fit better */
+      padding: 8px 16px; /* Adjust padding for smaller screens */
+  }
+
+  .submit-button {
+      padding: 12px; /* Adjust padding to fit screen size */
+      font-size: 14px;
+  }
+
+  .app-logo {
+      width: 80px;
+      height: 80px;
+  }
+
+  h2 {
+      font-size: 1.5rem; /* Reduce heading size */
+  }
+
+  /* Ensure background is infinite on taller screens */
+  .login-page {
+      min-height: 100vh; /* Ensure it covers the viewport initially */
+      background-size: cover;
+      background-repeat: repeat; /* Infinite background */
+  }
+}
+/* Responsive styling for 801x915 resolution */
+@media (max-width: 801px) and (max-height: 915px) {
+  /* Hide the image container */
+  .image-container {
+      display: none;
+  }
+
+  /* Adjust the login container layout */
+  .login-container {
+      flex-direction: column; /* Stack content vertically */
+      width: 90%; /* Increase width to better fit the screen */
+      max-width: 600px; /* Limit max width for readability */
+      margin: 0 auto; /* Center the container */
+      padding: 20px; /* Add padding for spacing */
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Adjust form container padding */
+  .form-container {
+      padding: 20px; /* Standard padding for compact layout */
+  }
+
+  /* App logo adjustments */
+  .app-logo {
+      width: 80px; /* Slightly smaller logo */
+      height: 80px;
+  }
+
+  /* Heading styling */
+  h2 {
+      font-size: 1.5rem; /* Reduce heading size for readability */
+      margin-bottom: 15px;
+  }
+
+  /* Role button adjustments */
+  .role-button {
+      font-size: 14px; /* Smaller font size */
+      padding: 8px 16px; /* Adjust padding for smaller screens */
+  }
+
+  /* Submit button adjustments */
+  .submit-button {
+      padding: 12px;
+      font-size: 14px; /* Smaller font size */
+  }
+
+  /* Background settings */
+  .login-page {
+      min-height: 100vh; /* Ensures full viewport coverage */
+      background: url('./test1.png') repeat; /* Infinite background */
+      background-size: cover;
+  }
+}
+/* Responsive styling for 801x915 resolution */
+@media (max-width: 801px) and (max-height: 915px) {
+    /* Hide the image container */
+    .image-container {
+        display: none;
+    }
+
+    /* Adjust the login container layout */
+    .login-container {
+        flex-direction: column; /* Stack content vertically */
+        width: 90%; /* Increase width to better fit the screen */
+        max-width: 600px; /* Limit max width for readability */
+        margin: 0 auto; /* Center the container */
+        padding: 20px; /* Add padding for spacing */
+        background-color: #fff;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Adjust form container padding */
+    .form-container {
+        padding: 20px; /* Standard padding for compact layout */
+    }
+
+    /* App logo adjustments */
+    .app-logo {
+        width: 80px; /* Slightly smaller logo */
+        height: 80px;
+    }
+
+    /* Heading styling */
+    h2 {
+        font-size: 1.5rem; /* Reduce heading size for readability */
+        margin-bottom: 15px;
+    }
+
+    /* Role button adjustments */
+    .role-button {
+        font-size: 14px; /* Smaller font size */
+        padding: 8px 16px; /* Adjust padding for smaller screens */
+    }
+
+    /* Submit button adjustments */
+    .submit-button {
+        padding: 12px;
+        font-size: 14px; /* Smaller font size */
+    }
+
+    /* Background settings */
+    .login-page {
+        min-height: 100vh; /* Ensures full viewport coverage */
+        background: url('./test1.png') repeat; /* Infinite background */
+        background-size: cover;
+    }
+}
+/* Responsive styling for screens between 1025px and 1303px width */
+@media (min-width: 1025px) and (max-width: 1303px) {
+  /* Adjust the login container layout */
+  .login-container {
+      width: 75%; /* Increase width slightly to fit larger screens */
+      max-width: 850px; /* Adjust max width for readability */
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Hide image container for this range */
+  .image-container {
+      display: none; /* Ensure image container is hidden */
+  }
+
+  /* Form container adjustments for better spacing */
+  .form-container {
+      padding: 30px;
+  }
+
+  /* App logo size adjustments for medium screens */
+  .app-logo {
+      width: 90px;
+      height: 90px;
+  }
+
+  /* Adjust heading size for medium screens */
+  h2 {
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+  }
+
+  /* Role button adjustments for medium screens */
+  .role-button {
+      font-size: 15px;
+      padding: 10px 18px;
+  }
+
+  /* Submit button adjustments */
+  .submit-button {
+      padding: 14px;
+      font-size: 15px;
+  }
+
+  /* Background settings */
+  .login-page {
+      min-height: 100vh;
+      background: url('./test1.png') repeat;
+      background-size: cover;
+  }
 }
