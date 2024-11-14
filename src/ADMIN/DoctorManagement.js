@@ -49,7 +49,7 @@ const DoctorManagement = () => {
     const fetchDoctors = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`${config.baseURL}/doctor`);
+        const response = await fetch(`${config.baseURL}doctor`);
         if (response.ok) {
           const data = await response.json();
           setDoctors(data);

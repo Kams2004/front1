@@ -85,11 +85,11 @@ const UserRegistration = ({ onRegister, onCancel, user }) => {
 
       if (isRegistering) {
         // Create new user
-        await axios.post(`${config.baseURL}/signup`, userData);
+        await axios.post(`${config.baseURL}signup`, userData);
         showMessage('User registration successful!', 'success'); // Show specific success message for registration
       } else {
         // Update existing user
-        await axios.put(`${config.baseURL}/users/mod/${user.id}`, userData);
+        await axios.put(`${config.baseURL}users/mod/${user.id}`, userData);
         showMessage('User updated successfully!', 'success'); // Show specific success message for updates
       }
 
