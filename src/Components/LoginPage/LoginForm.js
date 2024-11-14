@@ -21,7 +21,7 @@ const LoginForm = ({ onBack, onShowRequestForm, onLoginSuccess }) => {
     const handleLogin = async (e) => {
         e.preventDefault();
         setError('');
-
+required
         if (!role) {
             setError('Please select a role before logging in.');
             return;
@@ -34,7 +34,7 @@ const LoginForm = ({ onBack, onShowRequestForm, onLoginSuccess }) => {
 
         try {
             const response = await axios.post(
-                `${config.baseURL}/user/login`,
+                `${config.baseURL}user/login`,
                 { username, password, remember_me },
                 { withCredentials: true }
             );
