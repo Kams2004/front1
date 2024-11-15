@@ -61,8 +61,25 @@ export const SmallContainer2 = () => {
   useEffect(() => {
     const fetchGroupCount = async () => {
       try {
-        const response = await axios.get(`${config.baseURL}roles/`);
-        setGroupCount(response.data.length);
+        const token = localStorage.getItem('accessToken'); // Retrieve the access token from localStorage
+
+        const response = await fetch(`${config.baseURL}roles/`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`, // Include the authorization token in the headers
+          },
+        });
+
+        const data = await response.json();
+
+        // Check if the data is an array and update the group count
+        if (Array.isArray(data)) {
+          setGroupCount(data.length);
+        } else {
+          console.error('Fetched data is not an array:', data);
+          setGroupCount(0); // Set group count to 0 if the data is not as expected
+        }
       } catch (error) {
         console.error('Error fetching group count:', error);
       }
@@ -70,7 +87,6 @@ export const SmallContainer2 = () => {
 
     fetchGroupCount();
   }, []);
-
   return (
     <div className="small-container">
       <i className="bi bi-people-fill groups-icon" />
@@ -81,7 +97,6 @@ export const SmallContainer2 = () => {
     </div>
   );
 };
-
 export const SmallContainer3 = () => {
   const [doctorCount, setDoctorCount] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -308,7 +323,7 @@ export const LargeContainer2 = () => {
             <th>{t('datePrescribed')}</th>
           </tr>
         </thead>
-        <tbody>
+        {/* <tbody>
           <tr>
             <td>1</td>
             <td>John Doe</td>
@@ -333,7 +348,7 @@ export const LargeContainer2 = () => {
             <td>850mg</td>
             <td>2024-09-22</td>
           </tr>
-        </tbody>
+        </tbody> */}
       </table>
     </div>
   );

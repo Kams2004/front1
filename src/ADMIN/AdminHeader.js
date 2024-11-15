@@ -1,4 +1,3 @@
-// Import necessary dependencies
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom"; // Import for navigation
@@ -6,7 +5,7 @@ import axios from "axios"; // Import axios for API requests
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./AdminHeader.css"; // Change the CSS file accordingly
-import config from '../config';
+import config from "../config";
 
 const AdminHeader = () => {
   const { t, i18n } = useTranslation("admin"); // Use the 'admin' namespace for translations
@@ -35,25 +34,31 @@ const AdminHeader = () => {
   const handleLogout = async () => {
     try {
       // Send logout request to the API
-      await axios.post(`${config.baseURL}user/logout`, {}, {
-        withCredentials: true, // Include credentials for cross-origin requests
-      });
+      await axios.post(
+        `${config.baseURL}user/logout`,
+        {},
+        {
+          withCredentials: true, // Include credentials for cross-origin requests
+        }
+      );
 
       // Clear all authentication data from local storage
       localStorage.clear(); // Clears all local storage entries
-      
+
       // Clear all cookies
       clearAllCookies();
-
-      // Optionally clear other items if you store additional info
-      // sessionStorage.clear(); // Uncomment if sessionStorage is also used
 
       // Redirect the user to the login page
       navigate("/");
     } catch (error) {
       // Handle any errors that may occur during logout
-      setError("Failed to log out. Please try again.");
+      setError(t("logoutError")); // Set a translated error message
       console.error("Logout error:", error);
+
+      // Clear the error message after 3 seconds
+      setTimeout(() => {
+        setError("");
+      }, 3000);
     }
   };
 
@@ -64,16 +69,15 @@ const AdminHeader = () => {
         <img src="pdmd.png" alt="PDMD Logo" className="admin-dashboard-logo" />
       </div>
 
-  {/* Search Bar - Centered */}
-<div className="d-flex form-control admin-search-bar rounded-pill admin-max-width">
-    <i className="mr-5 bi bi-search admin-search-icon"></i>
-    <input
-        type="text"
-        className="border-0 ml-5 admin-header-flex-grow"
-        placeholder={t("search")} // Use the translated text from 'admin' namespace
-    />
-</div>
-
+      {/* Search Bar - Centered */}
+      <div className="d-flex form-control admin-search-bar rounded-pill admin-max-width">
+        <i className="mr-5 bi bi-search admin-search-icon"></i>
+        <input
+          type="text"
+          className="border-0 ml-5 admin-header-flex-grow"
+          placeholder={t("search")} // Use the translated text from 'admin' namespace
+        />
+      </div>
 
       {/* Icons on the right */}
       <div className="admin-icons-container d-flex align-items-center">

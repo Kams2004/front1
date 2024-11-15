@@ -32,11 +32,16 @@ const Sidebar = ({ onItemClick }) => {
   };
 
   const getUserInitials = (name) => {
-    return name
-      .split(" ")
-      .map((part) => part[0])
+    const parts = name.split(" ").slice(0, 2); // Consider only the first two names
+    return parts
+      .map((part) => part[0]) // Take the first letter of each part
       .join("")
       .toUpperCase();
+  };
+
+  const getDisplayName = (name) => {
+    const parts = name.split(" ").slice(0, 2); // Consider only the first two names
+    return parts.join(" "); // Join them with a space
   };
 
   return (
@@ -52,7 +57,9 @@ const Sidebar = ({ onItemClick }) => {
           </div>
           {isExpanded && user?.accessToken && (
             <div className="admin-sidebar-user-info">
-              <p>{t("helloUser", { name: user.name })}</p>
+              <p>
+                {t("helloUser", { name: getDisplayName(user.name) })}
+              </p>
               <small>{user.email}</small>
             </div>
           )}
@@ -76,14 +83,6 @@ const Sidebar = ({ onItemClick }) => {
               <i className="bi bi-file-earmark-text"></i>
               {isExpanded && <span>{t("requests")}</span>}
             </li>
-            {/* <li onClick={() => handleItemClick("Patients")}>
-              <i className="bi bi-person-lines-fill"></i>
-              {isExpanded && <span>{t("patients")}</span>}
-            </li>
-            <li onClick={() => handleItemClick("Doctors/Prescriptions")}>
-              <i className="bi bi-file-earmark-medical"></i>
-              {isExpanded && <span>{t("doctorsPrescriptions")}</span>}
-            </li> */}
             <li onClick={() => handleItemClick("Settings")}>
               <i className="bi bi-gear"></i>
               {isExpanded && <span>{t("settings")}</span>}

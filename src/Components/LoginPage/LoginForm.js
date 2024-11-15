@@ -21,7 +21,7 @@ const LoginForm = ({ onBack, onShowRequestForm, onLoginSuccess }) => {
     const handleLogin = async (e) => {
         e.preventDefault();
         setError('');
-required
+
         if (!role) {
             setError('Please select a role before logging in.');
             return;

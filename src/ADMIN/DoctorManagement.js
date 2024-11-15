@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './DoctorManagement.css';
 import { useTranslation } from 'react-i18next';
+import axios from 'axios';
 import config from '../config';
 
 const getStatusButton = (status, t) => {
@@ -49,19 +50,23 @@ const DoctorManagement = () => {
     const fetchDoctors = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`${config.baseURL}doctor`);
-        if (response.ok) {
-          const data = await response.json();
-          setDoctors(data);
+        const response = await axios.get(`${config.baseURL}doctor`, {
+          withCredentials: true
+        });
+        if (response.data && Array.isArray(response.data.data)) {
+          setDoctors(response.data.data); // Extract doctors array from the `data` property
         } else {
-          console.error('Failed to fetch doctor data');
+          console.error('Unexpected response format:', response.data);
+          setDoctors([]);
         }
       } catch (error) {
-        console.error('An error occurred:', error);
+        console.error('An error occurred while fetching doctor data:', error);
+        setMessage({ type: 'error', text: 'Failed to fetch doctor data.' });
       } finally {
         setLoading(false);
       }
     };
+
     fetchDoctors();
   }, []);
 
@@ -78,16 +83,14 @@ const DoctorManagement = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await fetch(`${config.baseURL}doctor/add`, {
-        method: 'POST',
+      const response = await axios.post(`${config.baseURL}doctor/add`, formData, {
         headers: {
           'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        }
       });
 
-      const data = await response.json();
-      const errorMessage = data.message || data.Message || data["Message "];
+      const data = response.data;
+      const errorMessage = data.message || data.Message || data['Message '];
 
       if (errorMessage) {
         setMessage({ type: 'error', text: errorMessage });
@@ -130,7 +133,11 @@ const DoctorManagement = () => {
       ) : (
         <>
           {message && (
-            <div className={`doctor-management-message ${message.type === 'success' ? 'success' : 'error'}`}>
+            <div
+              className={`doctor-management-message ${
+                message.type === 'success' ? 'success' : 'error'
+              }`}
+            >
               {message.text}
             </div>
           )}
@@ -171,7 +178,7 @@ const DoctorManagement = () => {
                   ))}
                 </tbody>
               </table>
-              
+
               <div className="pagination-controls">
                 <button
                   onClick={handlePreviousPage}
@@ -180,7 +187,9 @@ const DoctorManagement = () => {
                 >
                   Previous
                 </button>
-                <span>Page {currentPage} of {totalPages}</span>
+                <span>
+                  Page {currentPage} of {totalPages}
+                </span>
                 <button
                   onClick={handleNextPage}
                   disabled={currentPage === totalPages}
