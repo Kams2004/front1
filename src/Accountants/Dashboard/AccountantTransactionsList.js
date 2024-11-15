@@ -14,7 +14,12 @@ const AccountantTransactionsList = ({ doctors, onDoctorSelect, selectedDoctorId 
   const [filteredSuggestions, setFilteredSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [totalCommission, setTotalCommission] = useState(0);
-
+  const formatNumberWithSpaces = (number) => {
+    return number
+      .toFixed(2) // Ensure two decimal places
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ' '); // Add spaces as thousand separators
+  };
+  
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage, setRecordsPerPage] = useState(10);
@@ -49,7 +54,7 @@ const AccountantTransactionsList = ({ doctors, onDoctorSelect, selectedDoctorId 
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const response = await fetch(`${config.baseURL}doctor`);
+        const response = await fetch(`${config.baseURL}doctor/`);
         const data = await response.json();
         setDoctorSuggestions(data);
 
@@ -144,11 +149,12 @@ const AccountantTransactionsList = ({ doctors, onDoctorSelect, selectedDoctorId 
     });
 
     const printTotalCommission = allTransactionsData.commission || 0;
+    const formattedTotalCommission = formatNumberWithSpaces(printTotalCommission);
 
     const printContent = `
       <html>
         <head>
-          <title>Print Transactions</title>
+          <title>EDEN_REPORD</title>
           <style>
             .table { width: 100%; border-collapse: collapse; }
             .table th, .table td { padding: 8px; text-align: left; border: 1px solid #ddd; }
@@ -176,7 +182,7 @@ const AccountantTransactionsList = ({ doctors, onDoctorSelect, selectedDoctorId 
                       <td>${transaction.id}</td>
                       <td>${transaction.patientName}</td>
                       <td>${transaction.examination}</td>
-                      <td>${transaction.cost.toFixed(2)}</td>
+                      <td>${formatNumberWithSpaces(transaction.cost)}</td>
                       <td>${transaction.transferDate}</td>
                     </tr>`
                 )
@@ -184,12 +190,12 @@ const AccountantTransactionsList = ({ doctors, onDoctorSelect, selectedDoctorId 
             </tbody>
           </table>
           <div class="total-commission">
-            <strong>Total Commission: ${printTotalCommission.toFixed(2)}</strong>
+            <strong>Total Commission: ${formattedTotalCommission}</strong>
           </div>
         </body>
       </html>
     `;
-
+    
     const newWindow = window.open('', '_blank');
     newWindow.document.open();
     newWindow.document.write(printContent);
@@ -339,7 +345,10 @@ const AccountantTransactionsList = ({ doctors, onDoctorSelect, selectedDoctorId 
       </div>
 
       <div className="total-commission">
-        <strong>{t('accountantTransactions.totalCommission')}: {totalCommission.toFixed(2)}</strong>
+      <strong className="A_T_commision">
+  {t('accountantTransactions.totalCommission')}: {formatNumberWithSpaces(totalCommission)} CFA
+</strong>
+
       </div>
     </div>
   );

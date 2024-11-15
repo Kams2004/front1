@@ -9,7 +9,7 @@ export const AccountantTransactionsContainer = ({ doctorId }) => {
 
   useEffect(() => {
     if (doctorId) {
-      fetch(`${config.baseURL}gnu_doctor/${doctorId}/research`)
+      fetch(`${config.baseURL}gnu_doctor/${doctorId}/research/`)
         .then((response) => response.json())
         .then((data) => {
           if (data && data.commission !== undefined) {

@@ -1,20 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import './DoctorManagement.css';
 import { useTranslation } from 'react-i18next';
-import axios from 'axios';
 import config from '../config';
 
-const getStatusButton = (status, t) => {
-  switch (status) {
-    case 'Complete':
-      return <button className="btn btn-success btn-sm rounded-pill">{t('complete')}</button>;
-    case 'Incomplete':
-      return <button className="btn btn-danger btn-sm rounded-pill">{t('incomplete')}</button>;
-    case 'Pending':
-      return <button className="btn btn-warning btn-sm rounded-pill">{t('pending')}</button>;
-    default:
-      return <button className="btn btn-danger btn-sm rounded-pill">{t('incomplete')}</button>;
+const getStatusButton = (doctor, t) => {
+  const { ModifiedAt } = doctor;
+  if (ModifiedAt) {
+    return <button className="btn btn-green btn-sm rounded-pill">{t('complete')}</button>;
+
   }
+  return <button className="btn btn-danger btn-sm rounded-pill">{t('incomplete')}</button>;
 };
 
 const DoctorManagement = () => {
@@ -50,23 +45,19 @@ const DoctorManagement = () => {
     const fetchDoctors = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(`${config.baseURL}doctor`, {
-          withCredentials: true
-        });
-        if (response.data && Array.isArray(response.data.data)) {
-          setDoctors(response.data.data); // Extract doctors array from the `data` property
+        const response = await fetch(`${config.baseURL}doctor/`);
+        if (response.ok) {
+          const data = await response.json();
+          setDoctors(data);
         } else {
-          console.error('Unexpected response format:', response.data);
-          setDoctors([]);
+          console.error('Failed to fetch doctor data');
         }
       } catch (error) {
-        console.error('An error occurred while fetching doctor data:', error);
-        setMessage({ type: 'error', text: 'Failed to fetch doctor data.' });
+        console.error('An error occurred:', error);
       } finally {
         setLoading(false);
       }
     };
-
     fetchDoctors();
   }, []);
 
@@ -83,14 +74,16 @@ const DoctorManagement = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post(`${config.baseURL}doctor/add`, formData, {
+      const response = await fetch(`${config.baseURL}doctor/add`, {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-        }
+        },
+        body: JSON.stringify(formData),
       });
 
-      const data = response.data;
-      const errorMessage = data.message || data.Message || data['Message '];
+      const data = await response.json();
+      const errorMessage = data.message || data.Message || data["Message "];
 
       if (errorMessage) {
         setMessage({ type: 'error', text: errorMessage });
@@ -133,11 +126,7 @@ const DoctorManagement = () => {
       ) : (
         <>
           {message && (
-            <div
-              className={`doctor-management-message ${
-                message.type === 'success' ? 'success' : 'error'
-              }`}
-            >
+            <div className={`doctor-management-message ${message.type === 'success' ? 'success' : 'error'}`}>
               {message.text}
             </div>
           )}
@@ -173,12 +162,13 @@ const DoctorManagement = () => {
                       <td>{doctor.DoctorPhone}</td>
                       <td>{doctor.DoctorNat}</td>
                       <td>{doctor.DoctorCNI}</td>
-                      <td>{getStatusButton('Incomplete', t)}</td>
+                      <td>{getStatusButton(doctor, t)}</td>
+
                     </tr>
                   ))}
                 </tbody>
               </table>
-
+              
               <div className="pagination-controls">
                 <button
                   onClick={handlePreviousPage}
@@ -187,9 +177,7 @@ const DoctorManagement = () => {
                 >
                   Previous
                 </button>
-                <span>
-                  Page {currentPage} of {totalPages}
-                </span>
+                <span>Page {currentPage} of {totalPages}</span>
                 <button
                   onClick={handleNextPage}
                   disabled={currentPage === totalPages}

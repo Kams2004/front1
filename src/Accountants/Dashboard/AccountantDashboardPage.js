@@ -1,5 +1,3 @@
-// src/Components/Accountant/AccountantDashboardPage.js
-
 import React, { useState } from 'react';
 import AccountantHeader from './Header/AccountantHeader';
 import AccountantSidebar from './SideBar/AccountantSidebar';

@@ -55,6 +55,17 @@
     border: none;
 }
 
+.A_T_commision {
+  font-size: 25px; /* Adjust font size */
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace; /* Monospace for consistent alignment */
+  text-align: right; /* Align text to the right */
+  display: block; /* Ensure it spans the full width */
+  /* margin-top: 10px; Add spacing above */
+  white-space: nowrap; /* Prevent wrapping */
+}
+
+
 .form-buttons .btn-primary:hover {
     background-color: #0056b3;
 }

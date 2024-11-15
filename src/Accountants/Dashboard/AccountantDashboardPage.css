@@ -29,3 +29,61 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
+/* Main dashboard page */
+.accountant-dashboard-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full viewport height */
+  }
+  
+  /* Header styling */
+  .accountant-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px; /* Fixed height for the header */
+    background-color: #424242; /* Adjust as needed */
+    z-index: 1000; /* Ensure it stays above the sidebar and body */
+  }
+  
+  /* Main content area */
+  .accountant-main-content {
+    display: flex;
+    flex: 1;
+    /* margin-top: 70px; Leave space for the fixed header */
+    height: calc(100vh - 70px); /* Ensure it fills the remaining height */
+    overflow: hidden; /* Prevent scrolling on the main content container */
+  }
+  
+  /* Sidebar styling */
+  .accountant-sidebar {
+    position: fixed;
+    top: 70px; /* Below the header */
+    left: 0;
+    bottom: 0;
+    width: 80px; /* Collapsed width */
+    background-color: #424242;
+    overflow-y: auto; /* Enable scrolling in the sidebar if necessary */
+    z-index: 999; /* Ensure it stays above the body content */
+    transition: width 0.3s ease;
+  }
+  
+  .accountant-sidebar.expanded {
+    width: 250px; /* Expanded width */
+    z-index: 1000; /* Ensure it overlays the body */
+  }
+  
+  /* Scrollable body content */
+  .accountant-dashboard-body {
+    margin-left: 80px; /* Leave space for the collapsed sidebar */
+    flex: 1;
+    overflow-y: auto; /* Allow vertical scrolling of the body content */
+    padding: 20px; /* Add padding for body content */
+    transition: margin-left 0.3s ease; /* Smooth transition when sidebar expands */
+  }
+  
+  .accountant-sidebar.expanded ~ .accountant-dashboard-body {
+    margin-left: 80px; /* Sidebar expansion does not push the body */
+  }
+  

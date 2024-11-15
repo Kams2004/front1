@@ -50,9 +50,11 @@
 } */
 
 .total-commission {
-    text-align: right;
+    font-size: 18px; /* Slightly smaller font for consistency */
     font-weight: bold;
-    font-size: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: right; /* Align to the right */
     color: black;
     margin-top: 10px;
-}
+    white-space: nowrap; /* Prevent wrapping */
+  }

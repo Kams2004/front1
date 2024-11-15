@@ -15,11 +15,16 @@ const AccountantReportsList = ({ selectedReportType }) => {
   const [errorMessage, setErrorMessage] = useState('');
   const [synthesisData, setSynthesisData] = useState({});
   const [isSelectAll, setIsSelectAll] = useState(false);
-
+  const formatNumberWithSpaces = (number) => {
+    return number
+      .toFixed(2) // Ensure two decimal places
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ' '); // Add spaces as thousand separators
+  };
+  
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const response = await fetch(`${config.baseURL}doctor`);
+        const response = await fetch(`${config.baseURL}doctor/`);
         const data = await response.json();
         setDoctors(data);
       } catch (error) {
@@ -292,8 +297,8 @@ const AccountantReportsList = ({ selectedReportType }) => {
             </tbody>
           </table>
           <div className="total-commission mt-2">
-            {t("accountantReports.totalCommission")}: {Object.values(synthesisData).reduce((sum, val) => sum + val, 0)} CFA
-          </div>
+  {t("accountantReports.totalCommission")}: {formatNumberWithSpaces(Object.values(synthesisData).reduce((sum, val) => sum + val, 0))} CFA
+</div>
         </div>
       </div>
     </div>
