@@ -1,0 +1,228 @@
+/* SendRequestPage Container */
+.send-request-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  /* Request Form Section */
+  .send-request-section {
+    width: 35%;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .send-request-logo {
+    max-width: 120px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .send-request-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+  
+  /* Success Message */
+  .send-request-success-message {
+    background-color: #e6f4ea;
+    color: #0260c5;
+    padding: 0.5rem;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  /* Input Group Styles */
+  .send-request-input-group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .send-request-input-group label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .send-request-input-group input,
+  .send-request-input-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .send-request-input-group input:focus,
+  .send-request-input-group textarea:focus {
+    border-color: rgb(44, 107, 202);
+    box-shadow: 0 0 5px rgba(44, 107, 202, 0.3);
+  }
+  
+  /* Button Group */
+  .send-request-button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  
+  .send-request-cancel-button,
+  .send-request-submit-button {
+    flex: 1;
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .send-request-cancel-button {
+    background-color: #f8f9fa;
+    color: #333;
+    border: 1px solid #ccc;
+  }
+  
+  .send-request-cancel-button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .send-request-submit-button {
+    background-color: #0260c5;
+    color: white;
+  }
+  
+  .send-request-submit-button:hover {
+    background-color: #063568;
+  }
+  
+  /* Info Section */
+  .send-request-info-section {
+    flex: 1;
+    background: url('/public/img.png') no-repeat center center / cover;
+    display: flex;
+    background-color: #002b36;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .send-request-info-section h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    font-family: "Inter", Arial, sans-serif;
+  }
+  
+  .send-request-info-section p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    font-family: "Inter", Arial, sans-serif;
+  }
+  
+  .send-request-info-section .send-request-learn-more {
+    color: #5cb85c;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .send-request-info-section .send-request-learn-more:hover {
+    text-decoration: underline;
+  }
+  /* Success Message */
+.send-request-success-message {
+    color: #0260c5;
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+  
+  /* Error Message */
+  .send-request-error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+  
+  /* Submit Button Loading State */
+  .send-request-submit-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  @media (max-width: 768px) {
+    .send-request-container {
+      flex-direction: column; /* Stack sections vertically */
+      height: auto;
+    }
+  
+    .send-request-section {
+      width: 100%; /* Full width */
+      padding: 2rem;
+      margin-bottom: 1.5rem; /* Add spacing between sections */
+    }
+  
+    .send-request-info-section {
+      width: 100%;
+      height: 200px;
+      display: flex; /* Keep info section visible for tablets */
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .send-request-info-section h1 {
+      font-size: 1.5rem;
+    }
+  
+    .send-request-info-section p {
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* Mobile */
+  @media (max-width: 480px) {
+    .send-request-container {
+      flex-direction: column; /* Stack sections vertically */
+      height: auto;
+    }
+  
+    .send-request-section {
+      width: 100%; /* Full width */
+      padding: 1.5rem;
+    }
+  
+    .send-request-info-section {
+      display: none; /* Hide info section on mobile */
+    }
+  
+    .send-request-title {
+      font-size: 1.4rem;
+      text-align: center;
+    }
+  
+    .send-request-input-group input,
+    .send-request-input-group textarea {
+      font-size: 0.9rem;
+      padding: 0.5rem;
+    }
+  
+    .send-request-button-group {
+      flex-direction: column; /* Stack buttons vertically */
+      gap: 0.5rem;
+    }
+  
+    .send-request-cancel-button,
+    .send-request-submit-button {
+      font-size: 0.9rem;
+      padding: 0.5rem;
+    }
+  }

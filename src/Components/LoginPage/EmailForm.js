@@ -83,7 +83,7 @@ const EmailForm = ({ onEmailReceived, onShowRequestForm }) => {
                             transition: 'color 0.3s'
                         }}
                     >
-                        request ?
+                        SignUp ?
                     </button>
                 </span>
                 <span>
@@ -100,7 +100,7 @@ const EmailForm = ({ onEmailReceived, onShowRequestForm }) => {
                             transition: 'color 0.3s'
                         }}
                     >
-                        received !
+                        Login !
                     </button>
                 </span>
             </div>

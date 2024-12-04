@@ -208,5 +208,97 @@
   "email": "Email"
 }
 
-  }
+,
+
+  "MATRICULE": "Matricule",
+  "NAME": "Nom",
+  "SURNAME": "Prénom",
+  "EMAIL": "Email",
+  "PHONE NUMBER": "Numéro de Téléphone",
+  "NATIONALITY": "Nationalité",
+  "CNI": "CNI",
+  "STATUS": "Statut",
+  "DOCTORS": "Médecins",
+  "ADD DOCTOR": "Ajouter un Médecin",
+  "DOCTOR NUMBER": "Numéro du Médecin",
+  "SPECIALITY": "Spécialité",
+  "FIRST NAME": "Prénom",
+  "LAST NAME": "Nom",
+  "DATE OF BIRTH": "Date de Naissance",
+  "PLACE OF BIRTH": "Lieu de Naissance",
+  "PRIMARY PHONE": "Téléphone Principal",
+  "SECONDARY PHONE": "Téléphone Secondaire",
+  "CANCEL": "Annuler",
+  "REGISTER": "Enregistrer",
+  "COMPLETE": "Complet",
+  "INCOMPLETE": "Incomplet"
+
+  ,
+   
+    "PREVIOUS": "Précédent",
+    "NEXT": "Suivant",
+    "PAGE": "Page",
+    "OF": "de",
+
+    "CNI NUMBER": "Numéro CNI",
+    
+    "LOADING": "Chargement..."
+  
+  
+,
+
+  "USER_MANAGEMENT": "Gestion des utilisateurs",
+  "ADD_USER": "Ajouter un utilisateur",
+  "ITEMS_PER_PAGE": "Éléments par page",
+  "NO": "N°",
+ 
+  "ROLES": "Rôles",
+  "ACTIONS": "Actions",
+  "NO_ROLES": "Aucun rôle",
+  "UPDATE": "Modifier",
+  "DELETE": "Supprimer",
+
+  "CONFIRM_DELETE": "Confirmer la suppression",
+  "DELETE_CONFIRMATION": "Êtes-vous sûr de vouloir supprimer {{name}}?",
+
+  "USER_NOT_CONNECTED": "L'utilisateur n'est pas connecté. Veuillez vous connecter.",
+  "FAILED_TO_FETCH_USERS": "Échec du chargement des utilisateurs.",
+  "USER_REGISTERED_SUCCESSFULLY": "Utilisateur enregistré avec succès !",
+  "USER_DELETED_SUCCESSFULLY": "Utilisateur supprimé avec succès.",
+  "FAILED_TO_DELETE_USER": "Échec de la suppression de l'utilisateur.",
+
+  
+    "REGISTER_USER": "Enregistrer un utilisateur",
+    "UPDATE_USER": "Mettre à jour un utilisateur",
+    "FIRST_NAME": "Prénom",
+    "LAST_NAME": "Nom",
+
+    "CONFIRM": "Confirmer",
+
+    "USER_REGISTRATION_SUCCESS": "Enregistrement réussi !",
+    "USER_UPDATE_SUCCESS": "Utilisateur mis à jour avec succès !",
+    "USER_REGISTRATION_FAILED": "Échec de l'enregistrement. Veuillez réessayer.",
+    "USER_UPDATE_FAILED": "Échec de la mise à jour. Veuillez réessayer.",
+
+    
+      "GROUP_MANAGEMENT": "Gestion des groupes",
+      "ENTER_GROUP_NAME": "Entrez le nom du groupe",
+      "ADD_GROUP": "Ajouter un groupe",
+
+      "GROUP_NAME": "Nom du groupe",
+
+      "GROUP_ADDED_SUCCESS": "Groupe \"{{groupName}}\" ajouté avec succès !",
+      "ERROR_ADDING_GROUP": "Erreur lors de l'ajout du groupe. Veuillez réessayer.",
+      "INVALID_GROUP_NAME": "Veuillez entrer un nom de groupe valide.",
+      "GROUP_DELETED_SUCCESS": "Groupe supprimé avec succès.",
+      "ERROR_DELETING_GROUP": "Erreur lors de la suppression du groupe. Veuillez réessayer.",
+      "ERROR_FETCHING_GROUPS": "Erreur lors du chargement des groupes. Veuillez réessayer.",
+      "CONFIRM_DELETE_GROUP": "Êtes-vous sûr de vouloir supprimer le groupe \"{{groupName}}\" ?"
+    
+    
+  
+  
+}
+
+  
   

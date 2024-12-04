@@ -1,0 +1,293 @@
+/* LoginPage Container */
+.login-page-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  /* Login Section */
+  .login-page-section {
+    background-color: #f8f9fa;
+    padding: 2rem 3rem;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  
+  .login-page-logo {
+    max-width: 120px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .login-page-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    line-height: 1.2;
+    color: #0260c5;
+  }
+  
+  /* Signup Prompt */
+  .login-page-signup-prompt {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .login-page-signup-link {
+    color: #0059b2;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .login-page-signup-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Login Button */
+  .login-page-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #fff;
+    color: #333;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .login-page-btn.google {
+    border: 1px solid #4285f4;
+    color: #4285f4;
+  }
+  
+  .login-page-btn.google:hover {
+    background-color: #4285f4;
+    color: #fff;
+  }
+  
+  /* Divider */
+  .login-page-divider {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 0;
+    position: relative;
+  }
+  
+  .login-page-divider::before,
+  .login-page-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: black;
+    margin: 0 1rem;
+  }
+  
+  .login-page-divider span {
+    font-size: 0.85rem;
+    color: #333;
+    white-space: nowrap;
+  }
+  
+  /* Form */
+  .login-page-form {
+    width: 100%;
+  }
+  
+  .login-page-email-input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .login-page-email-input:focus {
+    border-color: rgb(44, 107, 202);
+    box-shadow: 0 0 5px rgba(44, 107, 202, 0.5);
+  }
+  
+  .login-page-next-btn {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #0260c5;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+  
+  /* Info Section */
+  .login-page-info-section {
+    flex: 1;
+    background: url('/public/img.png') no-repeat center center / cover;
+    display: flex;
+    background-color: #002b36;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .login-page-info-section h1 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .login-page-info-section p {
+    font-size: 1rem;
+  }
+  /* Error message styling */
+.login-page-error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Success message styling */
+  .login-page-success-message {
+    color: green;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+/* Mobile Styles */
+@media (max-width: 480px) {
+  /* Login Page Container */
+  .login-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full viewport height */
+    width: 100%; /* Full width */
+    padding: 1rem; /* Prevent elements from touching edges */
+    box-sizing: border-box; /* Include padding in width/height */
+    background-color: #f8f9fa;
+    overflow: hidden; /* Prevent scrolling */
+  }
+
+  /* Login Section */
+  .login-page-section {
+    width: 100%; /* Full width */
+    max-width: 360px; /* Limit width on smaller screens */
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    text-align: center; /* Center align text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box; /* Include padding in width/height */
+  }
+
+  /* Title */
+  .login-page-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.4; /* Improve readability */
+    word-break: break-word; /* Allow breaking for long text */
+  }
+
+  /* Centered Text (Error/Success Messages and Divider Text) */
+  .login-page-error-message,
+  .login-page-success-message,
+  .login-page-divider span {
+    text-align: center; /* Center-align text */
+    padding: 0 1rem; /* Add padding to prevent touching edges */
+    word-wrap: break-word; /* Allow breaking for long words */
+    margin-bottom: 1rem; /* Add spacing below */
+  }
+
+  /* Divider */
+  .login-page-divider {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+  }
+
+  .login-page-divider span {
+    font-size: 0.85rem;
+    color: #333;
+    max-width: calc(100% - 2rem); /* Leave space for padding */
+    white-space: normal; /* Break text as needed */
+  }
+
+  .login-page-divider::before,
+  .login-page-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: #ccc;
+    margin: 0 0.5rem;
+  }
+
+  /* Input Field */
+  .login-page-email-input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box; /* Include padding in width */
+  }
+
+  /* Buttons */
+  .login-page-btn,
+  .login-page-next-btn {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    box-sizing: border-box; /* Include padding in width */
+  }
+
+  .login-page-btn.google {
+    background-color: #ffffff;
+    color: #4285f4;
+    border: 1px solid #4285f4;
+  }
+
+  .login-page-btn.google:hover {
+    background-color: #4285f4;
+    color: white;
+  }
+
+  .login-page-next-btn {
+    background-color: #0260c5;
+    color: white;
+    border: none;
+  }
+
+  .login-page-next-btn:disabled {
+    background-color: #ccc;
+  }
+
+  /* Optional Info Section (Hidden) */
+  .login-page-info-section {
+    display: none; /* Hide info section on smaller screens */
+  }
+}

@@ -14,7 +14,7 @@ import {
   SmallContainer5,
   SmallContainer6,
   LargeContainer1,
-  LargeContainer2,
+  // LargeContainer2,
 } from './containers'; // Import the newly defined containers
 
 const Body = () => {
@@ -39,9 +39,8 @@ const Body = () => {
         return <GroupManagement />;
       case 'Settings': // Add this case for the settings container
         return <AdminSettingsContainer />;
-      // Other cases for additional components
-      default:
-        return <LargeContainer2 />; // Render LargeContainer2 for default case
+        default:
+          return null; 
     }
   };
 

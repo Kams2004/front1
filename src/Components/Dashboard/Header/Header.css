@@ -1,5 +1,4 @@
-/* src/Components/Header/Header.css */
-
+/* General Header Styling */
 .dashboard-header {
   background-color: #f8f9fa;
   height: 70px;
@@ -8,42 +7,27 @@
   top: 0;
   left: 0;
   z-index: 1000;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-/* Logo styling */
+/* Logo Styling */
 .logo-container {
+  flex: 1;
   display: flex;
   align-items: center;
 }
 
 .dashboard-logo {
   height: 40px;
-  width: auto;
 }
 
-/* Center search bar */
-.search-bar-container {
-  max-width: 600px;
-  position: relative;
-}
-
-/* Search input styling */
-.search-bar {
-  height: 40px;
-  padding-left: 30px;
-  transition: box-shadow 0.3s ease;
-}
-
-.search-bar:focus {
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-.max-w {
-  max-width: 800px;
-}
-
+/* Icons Styling */
 .icons-container {
   display: flex;
+  gap: 20px;
   align-items: center;
 }
 
@@ -51,72 +35,18 @@
   font-size: 1.5rem;
   color: #333;
   cursor: pointer;
-  transition: color 0.3s ease;
-  position: relative; /* Ensure this is relative for proper absolute positioning of the count */
+  position: relative;
 }
 
 .icon:hover {
-  color: #007bff; /* Change color on hover */
+  color: #007bff;
 }
 
-.icon-spacing {
-  margin-right: 20px !important;
-  display: block;
-}
-
-/* Shake animation */
-.shake-icon {
-  animation: shake 0.5s infinite;
-}
-
-@keyframes shake {
-  0% { transform: translate(1px, 0); }
-  25% { transform: translate(-1px, 0); }
-  50% { transform: translate(1px, 0); }
-  75% { transform: translate(-1px, 0); }
-  100% { transform: translate(0, 0); }
-}
-
-/* Popover styling */
-.popover-container {
-  position: absolute;
-  background: white;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  z-index: 1000;
-  min-width: 150px;
-  border-radius: 0.5rem;
-  right: 0;
-  transform: translateY(0); /* Slide in from the top */
-  opacity: 1; /* Fully visible */
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-/* Notification popover specific styling */
-.notification-popover {
-  transform: translateX(0); /* Bring it to original position on hover */
-  opacity: 1; /* Make it visible */
-}
-
-.popover-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.popover-content p {
-  margin: 5px 0;
-  cursor: pointer;
-}
-
-.popover-content p:hover {
-  background-color: #f0f0f0; /* Highlight on hover */
-}
-
+/* Notification Badge */
 .notification-count {
-  position: absolute; /* Absolutely position the count */
-  top: -5px; /* Adjust the position relative to the icon */
-  right: -10px; /* Adjust the position relative to the icon */
+  position: absolute;
+  top: -5px;
+  right: -10px;
   background-color: red;
   color: white;
   border-radius: 50%;
@@ -124,21 +54,58 @@
   font-size: 0.75rem;
 }
 
-/* Responsive styles */
-@media screen and (max-width: 600px) {
-  .icon-spacing {
-    display: none;
-  }
-}
-.popover-container.hidden {
-  opacity: 0;
-  transform: translateY(-10px); /* Slide out upwards */
+/* Search Bar Styling */
+
+.search-bar-wrapper {
+  position: absolute;
+  top: 90px; /* Adjust to create a gap below the header */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%; /* Adjust width to your preference */
+  max-width: 400px; /* Set a max width for larger screens */
+  z-index: 1100;
+  animation: dropdown 0.3s ease-in-out;
 }
 
-/* Language dropdown specific styling */
+.search-bar {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 12px; /* Slightly rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for a clean look */
+}
+
+.search-bar:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+
+/* Dropdown Animation */
+@keyframes dropdown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Language Dropdown */
 .language-dropdown {
-  display: flex;
-  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  z-index: 1000;
+  border-radius: 0.5rem;
 }
 
 .language-dropdown p {
@@ -148,4 +115,15 @@
 
 .language-dropdown p:hover {
   background-color: #f0f0f0;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .icons-container {
+    gap: 15px;
+  }
+
+  .search-bar-wrapper {
+    width: 90%; /* Make it full-width on mobile */
+  }
 }

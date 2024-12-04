@@ -1,110 +1,113 @@
 import React, { useEffect, useState } from 'react';
 import './GroupManagement.css';
 import config from '../config';
+import { useTranslation } from 'react-i18next';
 
 const GroupManagement = () => {
+  const { t } = useTranslation();
   const [groups, setGroups] = useState([]);
   const [newGroup, setNewGroup] = useState('');
-  const [message, setMessage] = useState(''); // State to store success/error messages
-  const [messageType, setMessageType] = useState(''); // 'success' or 'error'
+  const [message, setMessage] = useState('');
+  const [messageType, setMessageType] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [groupToDelete, setGroupToDelete] = useState(null);
 
-  // Fetch groups from the backend on component mount
   useEffect(() => {
     const fetchGroups = async () => {
       try {
-        const token = localStorage.getItem('accessToken'); // Retrieve the access token from localStorage
-
+        const token = localStorage.getItem('accessToken');
         const response = await fetch(`${config.baseURL}roles/`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}` // Include the authorization token in the headers
-          }
+            Authorization: `Bearer ${token}`,
+          },
         });
-
         const data = await response.json();
-
-        // Ensure the data is an array before setting it to state
         if (Array.isArray(data)) {
           setGroups(data);
         } else {
           console.error('Fetched data is not an array:', data);
-          setGroups([]); // Set groups to an empty array if the data is not as expected
+          setGroups([]);
         }
       } catch (error) {
         console.error('Error fetching groups:', error);
-        showMessage('Error fetching groups. Please try again.', 'error');
+        showMessage(t('ERROR_FETCHING_GROUPS'), 'error');
       }
     };
 
     fetchGroups();
-  }, []);
+  }, [t]);
 
   const handleAddGroup = async () => {
     if (newGroup.trim()) {
       const newGroupItem = { name: newGroup };
-      const token = localStorage.getItem('accessToken'); // Retrieve the access token
-
+      const token = localStorage.getItem('accessToken');
       try {
         const response = await fetch(`${config.baseURL}roles/add`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`, // Include the authorization token
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(newGroupItem),
         });
-
-        const result = await response.json(); // Collect the response message
-
+        const result = await response.json();
         if (response.ok) {
           setGroups([...groups, result]);
-          showMessage(`Group "${newGroup}" added successfully!`, 'success'); // Success message
-          setNewGroup(''); // Clear input field
+          showMessage(t('GROUP_ADDED_SUCCESS', { groupName: newGroup }), 'success');
+          setNewGroup('');
         } else {
-          showMessage(result.Message || 'Failed to add group.', 'error'); // Error message
+          showMessage(result.Message || t('ERROR_ADDING_GROUP'), 'error');
         }
       } catch (error) {
         console.error('Error adding group:', error);
-        showMessage('Error adding group. Please try again.', 'error');
+        showMessage(t('ERROR_ADDING_GROUP'), 'error');
       }
     } else {
-      showMessage('Please enter a valid group name.', 'error');
+      showMessage(t('INVALID_GROUP_NAME'), 'error');
     }
   };
 
-  const handleDeleteGroup = async (id) => {
-    const token = localStorage.getItem('accessToken'); // Retrieve the access token
-
+  const handleDeleteGroup = async () => {
+    if (!groupToDelete) return;
+    const token = localStorage.getItem('accessToken');
     try {
-      const response = await fetch(`${config.baseURL}roles/del/${id}`, {
+      const response = await fetch(`${config.baseURL}roles/del/${groupToDelete.id}`, {
         method: 'DELETE',
         headers: {
-          'Authorization': `Bearer ${token}`, // Include the authorization token
+          Authorization: `Bearer ${token}`,
         },
       });
-
-      const result = await response.json(); // Collect the response message
-
+      const result = await response.json();
       if (response.ok) {
-        const updatedGroups = groups.filter(group => group.id !== id);
-        setGroups(updatedGroups); // Update the state with the new group list
-        showMessage(result.Message || 'Group deleted successfully.', 'success'); // Success message
+        setGroups(groups.filter((group) => group.id !== groupToDelete.id));
+        showMessage(result.Message || t('GROUP_DELETED_SUCCESS'), 'success');
+        setShowModal(false);
       } else {
-        showMessage(result.Message || 'Failed to delete group.', 'error'); // Error message
+        showMessage(result.Message || t('ERROR_DELETING_GROUP'), 'error');
       }
     } catch (error) {
       console.error('Error deleting group:', error);
-      showMessage('Error deleting group. Please try again.', 'error');
+      showMessage(t('ERROR_DELETING_GROUP'), 'error');
+    } finally {
+      setGroupToDelete(null);
     }
   };
 
-  // Function to show the message with a specific type ('success' or 'error')
+  const confirmDelete = (group) => {
+    setGroupToDelete(group);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setGroupToDelete(null);
+  };
+
   const showMessage = (msg, type) => {
     setMessage(msg);
     setMessageType(type);
-
-    // Automatically clear the message after 3 seconds
     setTimeout(() => {
       setMessage('');
       setMessageType('');
@@ -113,32 +116,26 @@ const GroupManagement = () => {
 
   return (
     <div className="group-management-container">
-      {/* Display the success or error message with dynamic styling */}
-      {message && (
-        <p className={`message text-center ${messageType}`}>
-          {message}
-        </p>
-      )}
-
-      <h3>Group Management</h3>
-
-      <div className="add-group-container">
+      {message && <p className={`group-management-message ${messageType}`}>{message}</p>}
+      <h3>{t('GROUP_MANAGEMENT')}</h3>
+      <div className="group-management-add-container">
         <input
           type="text"
           value={newGroup}
           onChange={(e) => setNewGroup(e.target.value)}
-          placeholder="Enter group name"
-          className="group-input"
+          placeholder={t('ENTER_GROUP_NAME')}
+          className="group-management-input"
         />
-        <button className="add-group-button" onClick={handleAddGroup}>Add Group</button>
+        <button className="group-management-add-button" onClick={handleAddGroup}>
+          {t('ADD_GROUP')}
+        </button>
       </div>
-
-      <table className="table table-striped group-table">
+      <table className="table table-striped group-management-table">
         <thead>
           <tr>
-            <th>No</th>
-            <th>Group Name</th>
-            <th>Actions</th> {/* New Actions column */}
+            <th>{t('NO')}</th>
+            <th>{t('GROUP_NAME')}</th>
+            <th>{t('ACTIONS')}</th>
           </tr>
         </thead>
         <tbody>
@@ -149,15 +146,33 @@ const GroupManagement = () => {
               <td>
                 <button
                   className="btn btn-danger btn-sm rounded-pill"
-                  onClick={() => handleDeleteGroup(group.id)}
+                  onClick={() => confirmDelete(group)}
                 >
-                  &minus; {/* Unicode minus symbol */}
+                  &minus;
                 </button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+
+      {showModal && (
+  <div className="group-management-modal-overlay">
+    <div className="group-management-modal-container">
+      <h4>{t('CONFIRM_DELETE')}</h4>
+      <p>{t('CONFIRM_DELETE_GROUP', { groupName: groupToDelete?.name })}</p>
+      <div className="group-management-modal-actions">
+        <button className="btn btn-danger" onClick={handleDeleteGroup}>
+          {t('DELETE')}
+        </button>
+        <button className="btn btn-secondary" onClick={closeModal}>
+          {t('CANCEL')}
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
     </div>
   );
 };

@@ -4,10 +4,12 @@ import axios from 'axios';
 import './UserManagement.css';
 import config from '../config';
 import { useAuth } from '../AuthContext';
+import { useTranslation } from 'react-i18next'; // Import the translation hook
 
 axios.defaults.withCredentials = true;
 
 const UserManagement = () => {
+  const { t } = useTranslation(); // Initialize translation hook
   const [showRegistration, setShowRegistration] = useState(false);
   const [users, setUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
@@ -15,7 +17,9 @@ const UserManagement = () => {
   const [messageType, setMessageType] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(5);
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const [userToDelete, setUserToDelete] = useState(null);
   const { isConnected } = useAuth();
 
   const showMessage = (msg, type) => {
@@ -27,30 +31,29 @@ const UserManagement = () => {
     }, 3000);
   };
 
+  const handleEdit = (user) => {
+    setCurrentUser(user);
+    setShowRegistration(true); // Open the user registration form for editing
+  };
+
   const fetchUsers = useCallback(async () => {
     if (!isConnected) {
-      showMessage('User is not connected. Please log in.', 'error');
-      setLoading(false); // Stop loading if not connected
+      showMessage(t('USER_NOT_CONNECTED'), 'error');
+      setLoading(false);
       return;
     }
-  
+
     try {
-      setLoading(true); // Start loading when fetching begins
-      const response = await axios.get(`${config.baseURL}users/all`, {
-        withCredentials: true,
-      });
+      setLoading(true);
+      const response = await axios.get(`${config.baseURL}users/all`, { withCredentials: true });
       setUsers(response.data);
     } catch (err) {
-      if (err.response && err.response.status === 401) {
-        showMessage('You need to log in to access this data.', 'error');
-      } else {
-        showMessage('Failed to fetch users. Please try again later.', 'error');
-      }
-      console.error('Error fetching users:', err);
+      const errorMessage = err.response?.data?.Message || t('FAILED_TO_FETCH_USERS');
+      showMessage(errorMessage, 'error');
     } finally {
-      setLoading(false); // Stop loading when fetching ends
+      setLoading(false);
     }
-  }, [isConnected]);
+  }, [isConnected, t]);
 
   useEffect(() => {
     fetchUsers();
@@ -60,7 +63,7 @@ const UserManagement = () => {
     setShowRegistration(false);
     setCurrentUser(null);
     await fetchUsers();
-    showMessage('User registered successfully!', 'success');
+    showMessage(t('USER_REGISTERED_SUCCESSFULLY'), 'success');
   };
 
   const handleCancel = () => {
@@ -68,38 +71,36 @@ const UserManagement = () => {
     setCurrentUser(null);
   };
 
-  const handleEdit = (user) => {
-    setCurrentUser(user);
-    setShowRegistration(true);
+  const handleDeleteClick = (user) => {
+    setUserToDelete(user);
+    setShowModal(true);
   };
 
-  const handleDelete = async (userId) => {
-    if (!isConnected) {
-      showMessage('User is not connected. Please log in.', 'error');
-      return;
-    }
+  const confirmDelete = async () => {
+    if (!isConnected || !userToDelete) return;
 
-    const confirmed = window.confirm('Are you sure you want to delete this user?');
-    if (confirmed) {
-      try {
-        const response = await axios.delete(`${config.baseURL}users/del/${userId}`, {
-          withCredentials: true,
-        });
-
-        if (response.status === 200) {
-          const responseMessage = response.data.Message || 'User deleted successfully.';
-          showMessage(responseMessage, 'success');
-          await fetchUsers();
-        } else {
-          const errorMessage = response.data.Message || 'Failed to delete user.';
-          showMessage(errorMessage, 'error');
-        }
-      } catch (err) {
-        const errorMessage = err.response ? err.response.data.Message : err.message;
-        showMessage(`Failed to delete user: ${errorMessage}`, 'error');
-        console.error('Error deleting user:', err);
+    try {
+      const response = await axios.delete(`${config.baseURL}users/del/${userToDelete.id}`, {
+        withCredentials: true,
+      });
+      if (response.status === 200) {
+        showMessage(response.data.Message || t('USER_DELETED_SUCCESSFULLY'), 'success');
+        await fetchUsers();
+      } else {
+        showMessage(response.data.Message || t('FAILED_TO_DELETE_USER'), 'error');
       }
+    } catch (err) {
+      const errorMessage = err.response?.data?.Message || err.message;
+      showMessage(`${t('FAILED_TO_DELETE_USER')}: ${errorMessage}`, 'error');
+    } finally {
+      setShowModal(false);
+      setUserToDelete(null);
     }
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setUserToDelete(null);
   };
 
   const totalItems = users.length;
@@ -111,36 +112,28 @@ const UserManagement = () => {
 
   return (
     <div className="um-container">
-      {message && (
-        <p className={`um-message ${messageType}`}>
-          {message}
-        </p>
-      )}
+      {message && <p className={`um-message ${messageType}`}>{message}</p>}
 
       {loading ? (
         <div className="loader"></div>
       ) : showRegistration ? (
-        <UserRegistration 
-          onRegister={handleRegister} 
-          onCancel={handleCancel} 
-          user={currentUser}
-        />
+        <UserRegistration onRegister={handleRegister} onCancel={handleCancel} user={currentUser} />
       ) : (
         <>
-          <h3>User Management</h3>
+          <h3>{t('USER_MANAGEMENT')}</h3>
           <button
             className="um-add-user-button"
             onClick={() => {
               setCurrentUser(null);
               setShowRegistration(true);
-            }} 
+            }}
           >
-            Add User
+            {t('ADD_USER')}
           </button>
-          
+
           <div className="um-pagination-controls">
             <label>
-              Items per page:
+              {t('ITEMS_PER_PAGE')}:
               <select value={itemsPerPage} onChange={handleItemsPerPageChange}>
                 <option value={5}>5</option>
                 <option value={10}>10</option>
@@ -152,41 +145,45 @@ const UserManagement = () => {
           <table className="table table-striped um-table">
             <thead>
               <tr>
-                <th>No</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Roles</th>
-                <th>Actions</th>
+                <th>{t('NO')}</th>
+                <th>{t('NAME')}</th>
+                <th>{t('EMAIL')}</th>
+                <th>{t('ROLES')}</th>
+                <th>{t('ACTIONS')}</th>
               </tr>
             </thead>
             <tbody>
               {displayedUsers.map((user, index) => (
                 <tr key={user.id}>
                   <td>{(currentPage - 1) * itemsPerPage + index + 1}</td>
-                  <td>{user.first_name} {user.last_name}</td>
+                  <td>
+                    {user.first_name} {user.last_name}
+                  </td>
                   <td>{user.email}</td>
                   <td>
-                    {user.roles.length > 0 ? user.roles.map(role => role.name).join(', ') : 'No Roles'}
+                    {user.roles.length > 0
+                      ? user.roles.map((role) => role.name).join(', ')
+                      : t('NO_ROLES')}
                   </td>
                   <td className="um-action-buttons">
                     <button
                       className="btn btn-warning um-btn-action rounded-pill"
                       onClick={() => handleEdit(user)}
                     >
-                      Update
+                      {t('UPDATE')}
                     </button>
                     <button
                       className="btn btn-danger um-btn-action rounded-pill"
-                      onClick={() => handleDelete(user.id)}
+                      onClick={() => handleDeleteClick(user)}
                     >
-                      Delete
+                      {t('DELETE')}
                     </button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-          
+
           <div className="um-pagination-controls">
             <div className="um-pagination-buttons">
               {[...Array(totalPages)].map((_, i) => (
@@ -200,10 +197,27 @@ const UserManagement = () => {
               ))}
             </div>
             <div className="um-page-info">
-              Page: {currentPage} of {totalPages}
+              {t('PAGE')}: {currentPage} {t('OF')} {totalPages}
             </div>
           </div>
         </>
+      )}
+
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal-container">
+            <h4>{t('CONFIRM_DELETE')}</h4>
+            <p>{t('DELETE_CONFIRMATION', { name: `${userToDelete?.first_name} ${userToDelete?.last_name}` })}</p>
+            <div className="modal-actions">
+              <button className="btn btn-danger" onClick={confirmDelete}>
+                {t('DELETE')}
+              </button>
+              <button className="btn btn-secondary" onClick={closeModal}>
+                {t('CANCEL')}
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

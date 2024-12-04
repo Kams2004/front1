@@ -1,0 +1,479 @@
+/* Base styles remain the same */
+.connection-page-admin-container {
+    display: flex;
+    height: 100vh;
+    font-family: "Inter", Arial, sans-serif;
+  }
+  
+  /* Adjust login section width for smaller screens */
+  .connection-page-admin-login-section {
+    background-color: #f8f9fa;
+    padding: 2rem 3rem;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+  }
+  
+  /* Adjust logo size */
+  .connection-page-logo {
+    max-width: 100px;
+    height: auto;
+  }
+  
+  /* Styling for title */
+  .connection-page-login-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    margin-top: 5%;
+    color: #333;
+    text-align: center;
+  }
+  
+  /* Error message */
+  .connection-page-text-danger {
+    color: red;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  /* Role buttons */
+  .connection-page-role-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+  
+  .connection-page-role-button {
+    padding: 0.5rem 2rem;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 100%;
+    margin: 0 0.5rem;
+  }
+  
+  .connection-page-role-button.active {
+    background-color: #0056b3;
+    color: #fff;
+  }
+  
+  .connection-page-role-button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Form input styles */
+  .connection-page-input-group {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+  
+  .connection-page-input-group input {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+    flex: 1;
+    padding: 0.5rem;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .connection-page-input-group input:hover {
+    border-color: #b3b3b3;
+  }
+  
+  .connection-page-input-group input:focus {
+    border-color: #add8e6;
+    box-shadow: 0 0 5px rgba(173, 216, 230, 0.5);
+  }
+  
+  /* Password visibility icon */
+  .connection-page-input-group .connection-page-eye-icon {
+    cursor: pointer;
+  }
+  
+  /* Remember me checkbox and forgot password */
+  .connection-page-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .connection-page-remember-me {
+    display: flex;
+    align-items: center;
+    padding-right: 100px;
+  }
+  /* Form input styling */
+.input-group-text {
+  background-color: #f0f0f0;
+  border-radius: 30px 0 0 30px; /* Rounded start of the input group */
+  border-right: none;
+}
+.connection-page-submit-button.disabled {
+  background-color: #ccc; /* Gray background for disabled state */
+  cursor: not-allowed; /* Not-allowed cursor */
+  opacity: 0.6; /* Slightly faded */
+}
+
+/* Eye icon styling */
+.eye-icon {
+  cursor: pointer;
+}
+
+.eye-icon i {
+  font-size: 1.2rem; /* Adjust size if needed */
+}
+
+  
+  .connection-page-remember-me input {
+    margin-right: 0.5rem;
+  }
+  
+  .connection-page-forgot-password {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  /* Submit button */
+  .connection-page-submit-button {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #0260c5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .connection-page-submit-button:hover {
+    background-color: #063568;
+  }
+  
+  /* Info section */
+  .connection-page-info-section {
+    background: url('/public/img.png') no-repeat center center / cover;
+    background-color: #002b36;
+    color: white;
+    padding: 2rem;
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  /* Back button */
+  .connection-page-back-button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #0260c5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .connection-page-back-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive Design */
+  
+  /* Tablet */
+  @media (max-width: 768px) {
+    .connection-page-container {
+      flex-direction: column; /* Stack sections vertically */
+      height: auto;
+    }
+  
+    .connection-page-login-section {
+      width: 100%; /* Full width for login section */
+      padding: 2rem;
+    }
+  
+    .connection-page-info-section {
+      display: none; /* Hide the info section on tablets */
+    }
+  }
+  
+  /* Mobile */
+  /* Mobile */
+  @media (max-width: 480px) {
+    /* Main Container Adjustments */
+    .connection-page-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; /* Center content vertically */
+      height: 100vh; /* Full viewport height */
+      width: 100%; /* Full viewport width */
+      overflow: hidden; /* Prevent scrolling */
+      padding: 1rem; /* Prevent elements from touching edges */
+      box-sizing: border-box; /* Include padding in width/height calculations */
+      background-color: #f8f9fa; /* Optional: Background color */
+    }
+  
+    /* Header for Mobile View */
+    .connection-page-header {
+      width: 100%;
+      background-color: #002b36; /* Same color as the info section */
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+  
+    /* Login Section */
+    .connection-page-login-section {
+      width: 100%; /* Full width for login section */
+      max-width: 400px; /* Optional: Limit max width */
+      background-color: white; /* Optional: Add background color */
+      border-radius: 10px; /* Optional: Rounded corners */
+      padding: 1.5rem; /* Add padding for content spacing */
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+      align-items: center; /* Center content horizontally */
+      text-align: center; /* Center text */
+      box-sizing: border-box; /* Include padding in width */
+    }
+  
+    /* Hide the Info Section */
+    .connection-page-info-section {
+      display: none; /* Remove the info section */
+    }
+  
+    /* Adjust form spacing */
+    .connection-page-login-form {
+      width: 100%; /* Full width */
+      max-width: 360px; /* Limit max width */
+    }
+  
+    /* Role Buttons Adjustments */
+    .connection-page-role-buttons {
+      display: flex;
+      flex-direction: column; /* Stack buttons vertically */
+      gap: 1rem; /* Add spacing between buttons */
+      width: 100%; /* Full width */
+    }
+  
+    .connection-page-role-button {
+      width: 100%; /* Full width for buttons */
+      padding: 0.75rem; /* Adjust button padding */
+    }
+  
+    /* Input Fields Adjustments */
+    .connection-page-input-group {
+      display: flex;
+      align-items: center;
+      border-radius: 5px; /* Slightly rounded corners */
+      margin-bottom: 1rem;
+      border: 1px solid #ccc; /* Add a border */
+      background-color: #f8f9fa;
+      padding: 0.5rem;
+    }
+  
+    .connection-page-input-group input {
+      flex: 1;
+      border: none; /* Remove the border from the input itself */
+      outline: none; /* Remove default outline */
+      font-size: 1rem;
+      padding: 0.75rem; /* Add padding for a rectangular look */
+      background-color: transparent;
+    }
+    /* Remember Me and Forgot Password */
+    .connection-page-options {
+      display: flex;
+      flex-direction: column; /* Stack options vertically */
+      align-items: flex-start; /* Align to the left */
+      gap: 0.5rem; /* Add spacing between options */
+      width: 100%; /* Full width */
+    }
+
+.connection-page-input-group .input-group-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.connection-page-input-group .eye-icon i {
+  font-size: 1.2rem;
+  color: #6c757d;
+}
+
+.connection-page-input-group .eye-icon i:hover {
+  color: #495057;
+}
+  
+    .connection-page-remember-me {
+      width: 100%;
+    }
+  
+    .connection-page-forgot-password {
+      align-self: flex-end; /* Align button to the right */
+      text-decoration: underline;
+      color: #007bff;
+      cursor: pointer;
+    }
+  
+    /* Submit Button */
+    .connection-page-submit-button {
+      width: 100%; /* Full width for submit button */
+      padding: 0.75rem; /* Adjust padding */
+      font-size: 1rem; /* Consistent font size */
+      font-weight: bold;
+      background-color: #0260c5; /* Button color */
+      color: white; /* Text color */
+      border: none;
+      border-radius: 5px; /* Rounded corners */
+      cursor: pointer;
+    }
+  
+    .connection-page-submit-button:hover {
+      background-color: #0056b3; /* Darker color on hover */
+    }
+  }
+  /* Responsive adjustments for 770x589 */
+@media (max-width: 770px) {
+  .connection-page-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1rem;
+    height: auto; /* Allow content height to adjust */
+  }
+
+  .connection-page-login-section {
+    width: 100%;
+    max-width: 450px; /* Limit width for better layout */
+    padding: 1.5rem;
+  }
+
+  /* Role Buttons Section */
+  .connection-page-role-buttons {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 0.5rem; /* Add spacing between buttons */
+    width: 100%; /* Full width for buttons */
+  }
+
+  .connection-page-role-button {
+    width: 100%; /* Full width for each button */
+    padding: 0.75rem;
+    font-size: 1rem; /* Adjust font size */
+  }
+
+  .connection-page-login-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  /* Input Fields Adjustments */
+  .connection-page-input-group {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 1rem; /* Center inputs and add spacing */
+  }
+
+  .connection-page-options {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 1rem; /* Center options */
+    gap: 1rem; /* Add space between "Remember Me" and "Forgot Password" */
+    flex-wrap: wrap; /* Allow wrapping if needed */
+    justify-content: space-between;
+  }
+
+  .connection-page-remember-me {
+    flex: 1; /* Allow "Remember Me" to take up space */
+  }
+
+  .connection-page-forgot-password {
+    flex: 1; /* Align "Forgot Password" with "Remember Me" */
+    text-align: right; /* Right-align the button */
+  }
+
+  /* Submit Button */
+  .connection-page-submit-button {
+    max-width: 400px;
+    margin: 1rem auto 0;
+  }
+}
+/* Adjust buttons at 780x589 resolution */
+@media (max-width: 780px) {
+  .connection-page-role-buttons {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    width: 100%; /* Full width for buttons container */
+    align-items: center; /* Center-align buttons */
+    gap: 0.5rem; /* Add spacing between buttons */
+  }
+
+  .connection-page-role-button {
+    width: 100%; /* Make buttons take full width */
+    max-width: 400px; /* Optional: Limit the width */
+    padding: 0.75rem; /* Add padding for better appearance */
+    font-size: 1rem; /* Adjust font size */
+    text-align: center; /* Center text inside the button */
+    border-radius: 5px; /* Slightly rounded corners for consistency */
+  }
+}
+/* Adjust layout for resolutions between 778px and 1140px */
+@media (min-width: 778px) and (max-width: 1140px) {
+  .connection-page-role-buttons {
+    display: flex;
+    flex-direction: row; /* Align buttons side by side */
+    width: 100%; /* Full width for container */
+    justify-content: center; /* Center-align the buttons */
+    gap: 1rem; /* Add spacing between buttons */
+  }
+
+  .connection-page-role-button {
+    flex: 1; /* Make buttons take equal width */
+    max-width: 200px; /* Limit maximum width for buttons */
+    padding: 0.75rem; /* Add padding for better appearance */
+    font-size: 1rem; /* Maintain readable font size */
+    text-align: center; /* Center text inside buttons */
+    border-radius: 5px; /* Consistent styling */
+  }
+
+  .connection-page-login-title {
+    font-size: 1.8rem; /* Slightly larger title for this range */
+    margin-bottom: 2rem;
+  }
+
+  .connection-page-login-section {
+    width: 100%; /* Full width */
+    max-width: 600px; /* Limit max width of login section */
+    padding: 2rem; /* Add padding for better spacing */
+  }
+}

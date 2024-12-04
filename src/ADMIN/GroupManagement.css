@@ -1,67 +1,67 @@
-/* GroupManagement.css */
 .group-management-container {
-    background-color: #ffffff;
-    padding: 2.5rem;
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  .add-group-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-  }
-  
-  .group-input {
-    flex: 1;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-right: 0.5rem;
-  }
-  
-  .add-group-button {
-    background-color: #007bff; /* Blue background */
-    color: white;
-    border: none;
-    border-radius: 20px;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover */
-  }
-  
-  .add-group-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-    transform: scale(1.05); /* Scale up on hover */
-  }
-  
-  .group-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1.5rem;
-  }
-  
-  .group-table th,
-  .group-table td {
-    padding: 0.75rem;
-    text-align: left;
-  }
-  
-  .group-table th {
-    background-color: #f7f7f7;
-  }
-  
-  .group-table .btn-danger {
-    transition: transform 0.2s, background-color 0.2s; /* Smooth transition for hover */
-  }
-  
-  .group-table .btn-danger:hover {
-    transform: scale(1.1); /* Scale up on hover */
-  }
-  /* GroupManagement.css */
-.message {
+  background-color: #ffffff;
+  padding: 2.5rem;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.group-management-add-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.group-management-input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+}
+
+.group-management-add-button {
+  background-color: #007bff; /* Blue background */
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover */
+}
+
+.group-management-add-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.05); /* Scale up on hover */
+}
+
+.group-management-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+}
+
+.group-management-table th,
+.group-management-table td {
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.group-management-table th {
+  background-color: #f7f7f7;
+}
+
+.group-management-table .btn-danger {
+  transition: transform 0.2s, background-color 0.2s; /* Smooth transition for hover */
+}
+
+.group-management-table .btn-danger:hover {
+  transform: scale(1.1); /* Scale up on hover */
+}
+
+/* Message styles */
+.group-management-message {
   font-size: 16px;
   padding: 10px;
   margin-bottom: 15px;
@@ -69,14 +69,46 @@
   transition: opacity 0.5s ease; /* Optional: fade-out effect */
 }
 
-.message.success {
+.group-management-message.success {
   color: #155724;
   background-color: #d4edda;
   border: 1px solid #c3e6cb;
 }
 
-.message.error {
+.group-management-message.error {
   color: #721c24;
   background-color: #f8d7da;
   border: 1px solid #f5c6cb;
+}
+
+/* Modal styles */
+.group-management-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center vertically and horizontally */
+  z-index: 1000;
+}
+
+.group-management-modal-container {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 400px;
+  max-width: 90%; /* Adjust for smaller screens */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  z-index: 1001;
+}
+
+.group-management-modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
 }

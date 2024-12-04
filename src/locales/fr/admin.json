@@ -48,5 +48,16 @@
   "group": "Groupe",
   "cancelButton": "Annuler",
   "confirmButton": "Confirmer",
-  "createNewGroupInfo": "Si le groupe n'existe pas, il sera créé."
-}
+  "createNewGroupInfo": "Si le groupe n'existe pas, il sera créé.",
+
+
+
+    "errorFetchingRequests": "Une erreur s'est produite lors de la récupération des requêtes.",
+    "errorDeletingRequest": "Une erreur s'est produite lors de la suppression de la requête.",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "page": "Page",
+    "of": "sur"
+  }
+  
+

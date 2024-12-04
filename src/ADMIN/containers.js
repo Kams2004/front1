@@ -201,7 +201,7 @@ export const SmallContainer6 = () => {
 export const LargeContainer1 = () => {
   const [requests, setRequests] = useState([]);
   const [error, setError] = useState(null);
-  const { t } = useTranslation('admin');
+  const { t } = useTranslation('admin'); // Use 'admin' namespace for translations
   const [currentPage, setCurrentPage] = useState(1);
   const recordsPerPage = 5;
 
@@ -307,49 +307,49 @@ export const LargeContainer1 = () => {
   );
 };
 
-export const LargeContainer2 = () => {
-  const { t } = useTranslation('admin'); 
-  return (
-    <div className="wide-container">
-      <h3>{t('recentPrescriptions')}</h3>
-      <table className="table table-striped">
-        <thead>
-          <tr>
-            <th>{t('no')}</th> 
-            <th>{t('patientName')}</th>
-            <th>{t('doctorName')}</th>
-            <th>{t('medication')}</th>
-            <th>{t('dosage')}</th>
-            <th>{t('datePrescribed')}</th>
-          </tr>
-        </thead>
-        {/* <tbody>
-          <tr>
-            <td>1</td>
-            <td>John Doe</td>
-            <td>Dr. Smith</td>
-            <td>Amoxicillin</td>
-            <td>500mg</td>
-            <td>2024-09-20</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jane Smith</td>
-            <td>Dr. Johnson</td>
-            <td>Lisinopril</td>
-            <td>10mg</td>
-            <td>2024-09-21</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Emily Johnson</td>
-            <td>Dr. Brown</td>
-            <td>Metformin</td>
-            <td>850mg</td>
-            <td>2024-09-22</td>
-          </tr>
-        </tbody> */}
-      </table>
-    </div>
-  );
-};
+// export const LargeContainer2 = () => {
+//   const { t } = useTranslation('admin'); 
+//   return (
+//     <div className="wide-container">
+//       <h3>{t('recentPrescriptions')}</h3>
+//       <table className="table table-striped">
+//         <thead>
+//           <tr>
+//             <th>{t('no')}</th> 
+//             <th>{t('patientName')}</th>
+//             <th>{t('doctorName')}</th>
+//             <th>{t('medication')}</th>
+//             <th>{t('dosage')}</th>
+//             <th>{t('datePrescribed')}</th>
+//           </tr>
+//         </thead>
+//         {/* <tbody>
+//           <tr>
+//             <td>1</td>
+//             <td>John Doe</td>
+//             <td>Dr. Smith</td>
+//             <td>Amoxicillin</td>
+//             <td>500mg</td>
+//             <td>2024-09-20</td>
+//           </tr>
+//           <tr>
+//             <td>2</td>
+//             <td>Jane Smith</td>
+//             <td>Dr. Johnson</td>
+//             <td>Lisinopril</td>
+//             <td>10mg</td>
+//             <td>2024-09-21</td>
+//           </tr>
+//           <tr>
+//             <td>3</td>
+//             <td>Emily Johnson</td>
+//             <td>Dr. Brown</td>
+//             <td>Metformin</td>
+//             <td>850mg</td>
+//             <td>2024-09-22</td>
+//           </tr>
+//         </tbody> */}
+//       </table>
+//     </div>
+//   );
+// };

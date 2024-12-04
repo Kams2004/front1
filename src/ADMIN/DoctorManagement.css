@@ -212,3 +212,8 @@
   background-color: #218838; /* Darker green for hover */
   color: white;
 }
+/* Style table headers to uppercase */
+.doctor-management-table th {
+  text-transform: uppercase; /* Make text uppercase */
+  font-weight: bold; /* Ensure headers are bold for better visibility */
+}

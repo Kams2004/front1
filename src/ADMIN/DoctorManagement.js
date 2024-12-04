@@ -122,34 +122,38 @@ const DoctorManagement = () => {
   return (
     <div className="doctor-management-container">
       {loading ? (
-        <div className="loader">Loading...</div>
+        <div className="loader">{t('LOADING')}</div>
       ) : (
         <>
           {message && (
-            <div className={`doctor-management-message ${message.type === 'success' ? 'success' : 'error'}`}>
+            <div
+              className={`doctor-management-message ${
+                message.type === 'success' ? 'success' : 'error'
+              }`}
+            >
               {message.text}
             </div>
           )}
-          <h3>{t('doctors')}</h3>
+          <h3>{t('DOCTORS')}</h3>
           {!showForm ? (
             <>
               <button
                 className="doctor-management-add-doctor-button"
                 onClick={handleAddDoctorClick}
               >
-                {t('Add Doctor')}
+                {t('ADD DOCTOR')}
               </button>
               <table className="table table-striped doctor-management-table">
                 <thead>
                   <tr>
-                    <th>{t('matricule')}</th>
-                    <th>{t('name')}</th>
-                    <th>{t('surname')}</th>
-                    <th>{t('placeOfBirth')}</th>
-                    <th>{t('phoneNumber')}</th>
-                    <th>{t('nationality')}</th>
+                    <th>{t('MATRICULE')}</th>
+                    <th>{t('NAME')}</th>
+                    <th>{t('SURNAME')}</th>
+                    <th>{t('EMAIL')}</th>
+                    <th>{t('PHONE NUMBER')}</th>
+                    <th>{t('NATIONALITY')}</th>
                     <th>{t('CNI')}</th>
-                    <th>{t('status')}</th>
+                    <th>{t('STATUS')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -158,32 +162,33 @@ const DoctorManagement = () => {
                       <td>{doctor.DoctorNO}</td>
                       <td>{doctor.DoctorName}</td>
                       <td>{doctor.DoctorLastname}</td>
-                      <td>{doctor.DoctorPOB}</td>
+                      <td>{doctor.DoctorEmail}</td>
                       <td>{doctor.DoctorPhone}</td>
                       <td>{doctor.DoctorNat}</td>
                       <td>{doctor.DoctorCNI}</td>
                       <td>{getStatusButton(doctor, t)}</td>
-
                     </tr>
                   ))}
                 </tbody>
               </table>
-              
+  
               <div className="pagination-controls">
                 <button
                   onClick={handlePreviousPage}
                   disabled={currentPage === 1}
                   className="pagination-button"
                 >
-                  Previous
+                  {t('PREVIOUS')}
                 </button>
-                <span>Page {currentPage} of {totalPages}</span>
+                <span>
+                  {t('PAGE')} {currentPage} {t('OF')} {totalPages}
+                </span>
                 <button
                   onClick={handleNextPage}
                   disabled={currentPage === totalPages}
                   className="pagination-button"
                 >
-                  Next
+                  {t('NEXT')}
                 </button>
               </div>
             </>
@@ -191,7 +196,7 @@ const DoctorManagement = () => {
             <form className="doctor-management-form" onSubmit={handleFormSubmit}>
               <div className="doctor-management-number-speciality-group">
                 <div className="doctor-management-input-group">
-                  <label>{t('Doctor Number')}</label>
+                  <label>{t('DOCTOR NUMBER')}</label>
                   <input
                     type="text"
                     name="DoctorNO"
@@ -200,7 +205,7 @@ const DoctorManagement = () => {
                   />
                 </div>
                 <div className="doctor-management-input-group">
-                  <label>{t('Speciality')}</label>
+                  <label>{t('SPECIALITY')}</label>
                   <input
                     type="text"
                     name="Speciality"
@@ -209,10 +214,9 @@ const DoctorManagement = () => {
                   />
                 </div>
               </div>
-
               <div className="doctor-management-name-group">
                 <div className="doctor-management-input-group">
-                  <label>{t('First Name')}</label>
+                  <label>{t('FIRST NAME')}</label>
                   <input
                     type="text"
                     name="DoctorName"
@@ -221,7 +225,7 @@ const DoctorManagement = () => {
                   />
                 </div>
                 <div className="doctor-management-input-group">
-                  <label>{t('Last Name')}</label>
+                  <label>{t('LAST NAME')}</label>
                   <input
                     type="text"
                     name="DoctorLastname"
@@ -230,10 +234,9 @@ const DoctorManagement = () => {
                   />
                 </div>
               </div>
-
               <div className="doctor-management-dob-pob-group">
                 <div className="doctor-management-input-group">
-                  <label>{t('Date of Birth')}</label>
+                  <label>{t('DATE OF BIRTH')}</label>
                   <input
                     type="date"
                     name="DoctorDOB"
@@ -242,7 +245,7 @@ const DoctorManagement = () => {
                   />
                 </div>
                 <div className="doctor-management-input-group">
-                  <label>{t('Place of Birth')}</label>
+                  <label>{t('PLACE OF BIRTH')}</label>
                   <input
                     type="text"
                     name="DoctorPOB"
@@ -251,10 +254,9 @@ const DoctorManagement = () => {
                   />
                 </div>
               </div>
-
               <div className="doctor-management-phone-group">
                 <div className="doctor-management-input-group">
-                  <label>{t('Primary Phone')}</label>
+                  <label>{t('PRIMARY PHONE')}</label>
                   <input
                     type="text"
                     name="DoctorPhone"
@@ -263,7 +265,7 @@ const DoctorManagement = () => {
                   />
                 </div>
                 <div className="doctor-management-input-group">
-                  <label>{t('Secondary Phone')}</label>
+                  <label>{t('SECONDARY PHONE')}</label>
                   <input
                     type="text"
                     name="DoctorPhone2"
@@ -272,9 +274,8 @@ const DoctorManagement = () => {
                   />
                 </div>
               </div>
-
               <div className="doctor-management-input-group">
-                <label>{t('Email')}</label>
+                <label>{t('EMAIL')}</label>
                 <input
                   type="email"
                   name="DoctorEmail"
@@ -282,10 +283,9 @@ const DoctorManagement = () => {
                   onChange={handleInputChange}
                 />
               </div>
-
               <div className="doctor-management-nat-cni-group">
                 <div className="doctor-management-input-group">
-                  <label>{t('Nationality')}</label>
+                  <label>{t('NATIONALITY')}</label>
                   <input
                     type="text"
                     name="DoctorNat"
@@ -294,7 +294,7 @@ const DoctorManagement = () => {
                   />
                 </div>
                 <div className="doctor-management-input-group">
-                  <label>{t('CNI Number')}</label>
+                  <label>{t('CNI NUMBER')}</label>
                   <input
                     type="text"
                     name="DoctorCNI"
@@ -303,13 +303,16 @@ const DoctorManagement = () => {
                   />
                 </div>
               </div>
-
               <div className="doctor-management-button-group">
-                <button type="button" className="doctor-management-cancel-button" onClick={handleCancel}>
-                  {t('Cancel')}
+                <button
+                  type="button"
+                  className="doctor-management-cancel-button"
+                  onClick={handleCancel}
+                >
+                  {t('CANCEL')}
                 </button>
                 <button type="submit" className="doctor-management-submit-button">
-                  {t('Register')}
+                  {t('REGISTER')}
                 </button>
               </div>
             </form>
@@ -318,6 +321,7 @@ const DoctorManagement = () => {
       )}
     </div>
   );
+  
 };
 
 export default DoctorManagement;

@@ -197,5 +197,112 @@
     "username": "Username",
     "email": "Email"
   }
+  ,
+  "MATRICULE": "Matricule",
+  "NAME": "Name",
+  "SURNAME": "Surname",
+  "EMAIL": "Email",
+  "PHONE NUMBER": "Phone Number",
+  "NATIONALITY": "Nationality",
+  "CNI": "CNI",
+  "STATUS": "Status",
+  "DOCTORS": "Doctors",
+  "ADD DOCTOR": "Add Doctor",
+  "DOCTOR NUMBER": "Doctor Number",
+  "SPECIALITY": "Speciality",
+  "FIRST NAME": "First Name",
+  "LAST NAME": "Last Name",
+  "DATE OF BIRTH": "Date of Birth",
+  "PLACE OF BIRTH": "Place of Birth",
+  "PRIMARY PHONE": "Primary Phone",
+  "SECONDARY PHONE": "Secondary Phone",
+  "CANCEL": "Cancel",
+  "REGISTER": "Register",
+  "COMPLETE": "Complete",
+  "INCOMPLETE": "Incomplete"
 
-}
+
+  ,
+    
+    "PREVIOUS": "Previous",
+    "NEXT": "Next",
+    "PAGE": "Page",
+    "OF": "of",
+
+    "CNI NUMBER": "CNI Number",
+ 
+    "LOADING": "Loading..."
+
+    ,
+    
+      "USER_MANAGEMENT": "User Management",
+      "ADD_USER": "Add User",
+      "ITEMS_PER_PAGE": "Items per page",
+      "NO": "No",
+   
+      "ROLES": "Roles",
+      "ACTIONS": "Actions",
+      "NO_ROLES": "No Roles",
+      "UPDATE": "Update",
+      "DELETE": "Delete",
+    
+      "CONFIRM_DELETE": "Confirm Delete",
+      "DELETE_CONFIRMATION": "Are you sure you want to delete {{name}}?",
+      
+      "USER_NOT_CONNECTED": "User is not connected. Please log in.",
+      "FAILED_TO_FETCH_USERS": "Failed to fetch users.",
+      "USER_REGISTERED_SUCCESSFULLY": "User registered successfully!",
+      "USER_DELETED_SUCCESSFULLY": "User deleted successfully.",
+      "FAILED_TO_DELETE_USER": "Failed to delete user."
+    
+    ,
+      "REGISTER_USER": "Register User",
+      "UPDATE_USER": "Update User",
+      "FIRST_NAME": "First Name",
+      "LAST_NAME": "Last Name",
+
+      "CONFIRM": "Confirm",
+ 
+      "USER_REGISTRATION_SUCCESS": "User registration successful!",
+      "USER_UPDATE_SUCCESS": "User updated successfully!",
+      "USER_REGISTRATION_FAILED": "Registration failed. Please try again.",
+      "USER_UPDATE_FAILED": "User update failed. Please try again.",
+
+      
+        "GROUP_MANAGEMENT": "Group Management",
+        "ENTER_GROUP_NAME": "Enter group name",
+        "ADD_GROUP": "Add Group",
+
+        "GROUP_NAME": "Group Name",
+  
+        "GROUP_ADDED_SUCCESS": "Group \"{{groupName}}\" added successfully!",
+        "ERROR_ADDING_GROUP": "Error adding group. Please try again.",
+        "INVALID_GROUP_NAME": "Please enter a valid group name.",
+        "GROUP_DELETED_SUCCESS": "Group deleted successfully.",
+        "ERROR_DELETING_GROUP": "Error deleting group. Please try again.",
+        "ERROR_FETCHING_GROUPS": "Error fetching groups. Please try again."
+      
+      ,
+        "recentRequests": "Recent Requests",
+        "no": "No",
+        "name": "Name",
+        "email": "Email",
+        "message": "Message",
+    
+        "validate": "Validate",
+        "decline": "Decline",
+        "errorFetchingRequests": "An error occurred while fetching requests.",
+        "errorDeletingRequest": "An error occurred while deleting the request.",
+        "previous": "Previous",
+        "next": "Next",
+        "page": "Page",
+        "of": "of",
+
+        "CONFIRM_DELETE_GROUP": "Are you sure you want to delete the group \"{{groupName}}\"?"
+       
+      
+    }
+    
+  
+  
+

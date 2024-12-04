@@ -83,10 +83,10 @@ const Sidebar = ({ onItemClick }) => {
               <i className="bi bi-file-earmark-text"></i>
               {isExpanded && <span>{t("requests")}</span>}
             </li>
-            <li onClick={() => handleItemClick("Settings")}>
+            {/* <li onClick={() => handleItemClick("Settings")}>
               <i className="bi bi-gear"></i>
               {isExpanded && <span>{t("settings")}</span>}
-            </li>
+            </li> */}
           </ul>
         </nav>
       </div>

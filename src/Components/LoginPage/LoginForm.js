@@ -18,79 +18,87 @@ const LoginForm = ({ onBack, onShowRequestForm, onLoginSuccess }) => {
     const navigate = useNavigate();
     const { login } = useAuth(); // Use the login function from AuthContext
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
-        setError('');
+   const handleLogin = async (e) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
 
-        if (!role) {
-            setError('Please select a role before logging in.');
-            return;
-        }
+    if (!role) {
+        setError('Please select a role before logging in.');
+        setLoading(false);
+        return;
+    }
 
-        if (!username || !password) {
-            setError('Please fill in all fields.');
-            return;
-        }
+    if (!username || !password) {
+        setError('Please fill in all fields.');
+        setLoading(false);
+        return;
+    }
 
-        try {
-            const response = await axios.post(
-                `${config.baseURL}user/login`,
-                { username, password, remember_me },
-                { withCredentials: true }
-            );
+    try {
+        // Logout before new login to ensure no existing session
+        await axios.post(`${config.baseURL}user/logout`, {}, { withCredentials: true });
 
-            const responseData = response.data;
+        // Send login request
+        const response = await axios.post(
+            `${config.baseURL}user/login`,
+            { username, password, remember_me },
+            { withCredentials: true }
+        );
 
-            if (response.status === 200) {
-                const accessToken = responseData['Token '];
-                const userRoles = responseData.data.roles ? responseData.data.roles.map(role => role.name) : [];
-                const sessionId = responseData.sessionId;
-                const doctorId = responseData.data.doctor_id;
-                const firstName = responseData.data.first_name;
-                const lastName = responseData.data.last_name;
-                const email = responseData.data.email;
+        const responseData = response.data;
 
-                if (accessToken && userRoles.includes(role)) {
-                    localStorage.setItem('accessToken', accessToken);
-                    localStorage.setItem('userRole', role);
-                    localStorage.setItem('doctorId', doctorId);
-                    localStorage.setItem('firstName', firstName);
-                    localStorage.setItem('lastName', lastName);
-                    localStorage.setItem('email', email);
+        if (response.status === 200) {
+            const accessToken = responseData['Token '];
+            const userRoles = responseData.data.roles ? responseData.data.roles.map(role => role.name) : [];
+            const doctorId = responseData.data.doctor_id;
+            const firstName = responseData.data.first_name;
+            const lastName = responseData.data.last_name;
+            const email = responseData.data.email;
 
-                    if (sessionId) {
-                        localStorage.setItem('sessionId', sessionId);
-                    }
+            // Map roles for backend compatibility
+            const roleMapping = {
+                Médecin: "Doctor",
+                Patient: "Patient",
+            };
 
-                    login({ accessToken, role, sessionId, doctorId, firstName, lastName, email });
+            if (accessToken && userRoles.includes(roleMapping[role])) {
+                const mappedRole = roleMapping[role];
 
-                    if (role === 'Admin') {
-                        navigate('/admin');
-                    } else if (role === 'Doctor') {
-                        navigate('/doctor');
-                    } else if (role === 'Patient') {
-                        navigate('/patient');
-                    } else if (role === 'Comptable') {  // Corrected to match "Comptable" from API
-                        navigate('/accountant');
-                    } else {
-                        setError('Role not recognized. Please contact support.');
-                    }
+                // Save user data to localStorage
+                localStorage.setItem('accessToken', accessToken);
+                localStorage.setItem('userRole', mappedRole);
+                localStorage.setItem('doctorId', doctorId || null); // Only for Doctor role
+                localStorage.setItem('firstName', firstName);
+                localStorage.setItem('lastName', lastName);
+                localStorage.setItem('email', email);
 
-                    // Signal successful login to LoginPage component
-                    onLoginSuccess && onLoginSuccess();
-                } else {
-                    setError('Connection Role does not correspond. Select the appropriate role!');
+                // Update AuthContext
+                login({ accessToken, role: mappedRole, doctorId, firstName, lastName, email });
+
+                // Navigate to respective dashboard
+                if (mappedRole === "Doctor") {
+                    navigate('/doctor');
+                } else if (mappedRole === "Patient") {
+                    navigate('/patient');
                 }
-            }
-        } catch (err) {
-            if (err.response && err.response.data) {
-                setError(err.response.data.message || 'Login failed. Please check your credentials and try again.');
             } else {
-                setError('Network error. Please try again later.');
+                setError('The selected role does not match your assigned roles.');
+                setTimeout(() => setError(''), 3000);
             }
-            console.error('Login error:', err);
         }
-    };
+    } catch (err) {
+        if (err.response && err.response.status === 401) {
+            setError("Nom d'utilisateur ou mot de passe incorrect. Veuillez réessayer.");
+        } else {
+            setError("Erreur réseau. Veuillez réessayer.");
+        }
+        console.error('Login error:', err);
+    } finally {
+        setLoading(false);
+    }
+};
+
 
     return (
         <div className="form-container">

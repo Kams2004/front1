@@ -4,6 +4,22 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import config from '../../../../config';
 
+const NotificationModal = ({ message, type, onClose }) => {
+  useEffect(() => {
+    const timer = setTimeout(onClose, 4000); // Dismiss modal after 4 seconds
+    return () => clearTimeout(timer); // Cleanup timer on unmount
+  }, [onClose]);
+
+  return (
+    <div className={`notification-modal ${type}`}>
+      <p>{message}</p>
+      <div className="progress-bar">
+        <div className="progress" />
+      </div>
+    </div>
+  );
+};
+
 const SettingsContainer = ({ onProfileComplete }) => {
   const [formData, setFormData] = useState({
     DoctorNO: '',
@@ -12,51 +28,46 @@ const SettingsContainer = ({ onProfileComplete }) => {
     DoctorDOB: '',
     DoctorPhone: '',
     DoctorPhone2: '',
-    DoctorEmail: '', // Ensure 'Email' is initialized here
+    DoctorEmail: '',
     DoctorPOB: '',
     DoctorNat: '',
     DoctorCNI: '',
     Speciality: ''
   });
+  const [notification, setNotification] = useState({ message: '', type: '' });
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const doctorId = storedUser?.doctorId;
-  
+
     if (!doctorId) {
-      alert("Doctor ID is missing from local storage.");
+      setNotification({ message: "Doctor ID is missing from local storage.", type: "error" });
       return;
     }
-  
-    axios.get(`${config.baseURL}doctor/informations/${doctorId}`, {
-      withCredentials: true
-    })
-    .then((response) => {
-      const data = response.data;
-  
-      const formattedDate = data.DoctorDOB ? new Date(data.DoctorDOB).toISOString().split('T')[0] : '';
-  
-      // Map DoctorEmail to Email in formData
-      setFormData({
-        DoctorNO: data.DoctorNO || '',
-        DoctorName: data.DoctorName || '',
-        DoctorLastname: data.DoctorLastname || '',
-        DoctorDOB: formattedDate,
-        DoctorPhone: data.DoctorPhone || '',
-        DoctorPhone2: data.DoctorPhone2 || '',
-        DoctorEmail: data.DoctorEmail || '',  // Map DoctorEmail to Email
-        DoctorPOB: data.DoctorPOB || '',
-        DoctorNat: data.DoctorNat || '',
-        DoctorCNI: data.DoctorCNI || '',
-        Speciality: data.Speciality || '',
+
+    axios.get(`${config.baseURL}doctor/informations/${doctorId}`, { withCredentials: true })
+      .then((response) => {
+        const data = response.data;
+        const formattedDate = data.DoctorDOB ? new Date(data.DoctorDOB).toISOString().split('T')[0] : '';
+
+        setFormData({
+          DoctorNO: data.DoctorNO || '',
+          DoctorName: data.DoctorName || '',
+          DoctorLastname: data.DoctorLastname || '',
+          DoctorDOB: formattedDate,
+          DoctorPhone: data.DoctorPhone || '',
+          DoctorPhone2: data.DoctorPhone2 || '',
+          DoctorEmail: data.DoctorEmail || '',
+          DoctorPOB: data.DoctorPOB || '',
+          DoctorNat: data.DoctorNat || '',
+          DoctorCNI: data.DoctorCNI || '',
+          Speciality: data.Speciality || '',
+        });
+      })
+      .catch((error) => {
+        setNotification({ message: "Failed to fetch doctor data. Please try again.", type: "error" });
       });
-    })
-    .catch((error) => {
-      console.error("Error fetching doctor data:", error);
-      alert("Failed to fetch doctor data. Please try again.");
-    });
   }, []);
-  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -73,38 +84,31 @@ const SettingsContainer = ({ onProfileComplete }) => {
     const doctorId = storedUser?.doctorId;
 
     if (!doctorId) {
-      alert("Doctor ID is missing from local storage.");
+      setNotification({ message: "Doctor ID is missing from local storage.", type: "error" });
       return;
     }
 
     const requiredFields = [
-      'DoctorNO', 'DoctorName', 'DoctorLastname', 'DoctorDOB', 
+      'DoctorNO', 'DoctorName', 'DoctorLastname', 'DoctorDOB',
       'DoctorPhone', 'DoctorEmail', 'DoctorPOB', 'DoctorNat', 'DoctorCNI', 'Speciality'
     ];
     for (const field of requiredFields) {
       if (!formData[field]) {
-        alert(`Please fill in the ${field} field.`);
+        setNotification({ message: `Please fill in the ${field} field.`, type: "error" });
         return;
       }
     }
 
     try {
-      const response = await axios.put(
-        `${config.baseURL}doctor/update/${doctorId}`,
-        formData,
-        { withCredentials: true }
-      );
-
-      console.log('Response from server:', response.data);
-      alert('Profile updated successfully!');
+      await axios.put(`${config.baseURL}doctor/update/${doctorId}`, formData, { withCredentials: true });
+      setNotification({ message: "Profile updated successfully!", type: "success" });
 
       if (onProfileComplete && typeof onProfileComplete === 'function') {
         onProfileComplete();
       }
     } catch (error) {
-      console.error('Error updating profile:', error);
       const errorMessage = error.response?.data?.message || 'Failed to update profile. Please try again.';
-      alert(errorMessage);
+      setNotification({ message: errorMessage, type: "error" });
     }
   };
 
@@ -307,12 +311,20 @@ const SettingsContainer = ({ onProfileComplete }) => {
           </div>
         </div>
 
-        {/* Buttons */}
-        <div className="form-group text-center">
+     {/* Buttons */}
+     <div className="form-group text-center">
           <button type="submit" className="btn btn-primary">Update Profile</button>
           <button type="button" className="btn btn-secondary ml-2" onClick={handleReset}>Reset</button>
         </div>
       </form>
+
+      {notification.message && (
+        <NotificationModal
+          message={notification.message}
+          type={notification.type}
+          onClose={() => setNotification({ message: '', type: '' })}
+        />
+      )}
     </div>
   );
 };

@@ -57,16 +57,6 @@ export const TransactionsContainer = ({ handleReload }) => {
           title={t("transactions.toggleAmount")}
         ></i>
       </div>
-      <div className="progress mt-4">
-        <div
-          className="progress-bar progress-bar-striped"
-          role="progressbar"
-          style={{ width: '50%' }}
-          aria-valuenow="50"
-          aria-valuemin="0"
-          aria-valuemax="100"
-        ></div>
-      </div>
       <div className="transaction-info d-flex justify-content-between mt-4">
         <div className="commission d-flex align-items-center">
           <i className="bi bi-cash-coin"></i>

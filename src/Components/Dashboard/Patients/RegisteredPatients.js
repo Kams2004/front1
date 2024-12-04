@@ -5,6 +5,7 @@ import { ExclamationCircleFill } from 'react-bootstrap-icons';
 import './RegisteredPatients.css';
 import config from '../../../config';
 import { useTranslation } from 'react-i18next';
+import { Accordion, Card } from 'react-bootstrap';
 
 const RegisteredPatients = () => {
   const { t } = useTranslation(); // Initialize translation hook
@@ -117,6 +118,11 @@ const RegisteredPatients = () => {
     }
   };
 
+  const truncateName = (name) => {
+    const nameParts = name.split(' ');
+    return nameParts.length > 2 ? `${nameParts[0]} ${nameParts[1]}` : name;
+  };
+
   return (
     <div className="rp-transactions-list-container">
       <h2 className="text-center">{t("patients.title")}</h2>
@@ -166,48 +172,79 @@ const RegisteredPatients = () => {
 
       <div className="rp-results-container">
         <h3>{t("patients.showing", { count: currentPatients.length, total: patients.length })}</h3>
-        <table className="rp-table table-hover table-bordered table-striped">
-          <thead className="thead-light">
-            <tr>
-              <th>{t("patients.id")}</th>
-              <th>{t("patients.patientName")}</th>
-              <th>{t("patients.examination")}</th>
-              <th>{t("patients.commission")}</th>
-              <th>{t("patients.transferDate")}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentPatients.map((patient, index) => {
-              const [name, details] = Object.entries(patient)[0];
-              return (
-                <tr key={index}>
-                  <td>{indexOfFirstRecord + index + 1}</td>
-                  <td className="rp-text-left">{name}</td>
-                  <td className="rp-text-left">{details[0]}</td>
-                  <td className="rp-text-right">{parseFloat(details[1]).toFixed(2).replace(/\.?0+$/, '')}</td>
-                  <td>{details[2]}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <div className="rp-accordion-container">
+    <Accordion>
+        {currentPatients.map((patient, index) => {
+            const [name, details] = Object.entries(patient)[0];
+            const truncatedName = truncateName(name);
 
-        <div className="rp-total-commission-container">
-          <span className="rp-total-label">{t("patients.total")}:</span>
-          <span className="rp-total-value">{totalCommission.toFixed(2).replace(/\.?0+$/, '')} CFA</span>
-        </div>
+            return (
+                <Card key={index} className="mb-3">
+                    <Accordion.Item eventKey={index.toString()}>
+                        <Accordion.Header>
+                            <div className="d-flex justify-content-between w-100">
+                                <span>{truncatedName}</span>
+                                <span>{parseFloat(details[1]).toFixed(2).replace(/\.?0+$/, '')} CFA</span>
+                            </div>
+                        </Accordion.Header>
+                        <Accordion.Body>
+                            <div className="d-flex justify-content-between">
+                                <span>{details[0]}</span>
+                                <span>{details[2]}</span>
+                            </div>
+                        </Accordion.Body>
+                    </Accordion.Item>
+                </Card>
+            );
+        })}
+    </Accordion>
+</div>
 
-        <div className="pagination-controls text-center">
-          <button className="btn btn-primary m-1" onClick={prevPage} disabled={currentPage === 1}>
-            {t("patients.previous")}
-          </button>
-          <span> {t("patients.page", { page: currentPage })} </span>
-          <button className="btn btn-primary m-1" onClick={nextPage} disabled={indexOfLastRecord >= patients.length}>
-            {t("patients.next")}
-          </button>
+
+        {/* Desktop/Table View: Table */}
+        <div className="rp-table-container">
+          <table className="rp-table table-hover table-bordered table-striped">
+            <thead className="thead-light">
+              <tr>
+                <th>{t("patients.id")}</th>
+                <th>{t("patients.patientName")}</th>
+                <th>{t("patients.examination")}</th>
+                <th>{t("patients.commission")}</th>
+                <th>{t("patients.transferDate")}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {currentPatients.map((patient, index) => {
+                const [name, details] = Object.entries(patient)[0];
+                return (
+                  <tr key={index}>
+                    <td>{indexOfFirstRecord + index + 1}</td>
+                    <td className="rp-text-left">{name}</td>
+                    <td className="rp-text-left">{details[0]}</td>
+                    <td className="rp-text-right">{parseFloat(details[1]).toFixed(2).replace(/\.?0+$/, '')}</td>
+                    <td>{details[2]}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+
         </div>
       </div>
-
+      <div className="rp-total-commission-container">
+            <span className="rp-total-label">{t("patients.total")}:</span>
+            <span className="rp-total-value">{totalCommission.toFixed(2).replace(/\.?0+$/, '')} CFA</span>
+          </div>
+      <div className="pagination-controls text-center">
+            <button className="btn btn-primary m-1" onClick={prevPage} disabled={currentPage === 1}>
+              {t("patients.previous")}
+            </button>
+            <span> {t("patients.page", { page: currentPage })} </span>
+            <button className="btn btn-primary m-1" onClick={nextPage} disabled={indexOfLastRecord >= patients.length}>
+              {t("patients.next")}
+            </button>
+          </div>
+      {/* Error Modal */}
       {errorMessage && (
         <div className={`modal fade ${showErrorModal ? 'show' : ''}`} style={{ display: showErrorModal ? 'block' : 'none' }} tabIndex="-1" role="dialog">
           <div className="modal-dialog modal-dialog-centered" role="document">

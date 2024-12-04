@@ -233,56 +233,153 @@ h2 {
   font-size: 1rem;
   color: #333;
 }
-
-
-/* Responsive Adjustments */
-@media (max-width: 1200px) {
-  .top-row {
-    flex-direction: column;
-  }
-  .side-by-side {
-    flex-direction: column;
-  }
+@media (max-width: 768px) {
+/* Mobile Dashboard */
+.mobile-dashboard {
+  background: #f4f4f4;
+  padding: 1rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content from the top */
 }
 
 
-.content-container {
-  margin-top: 50px;
-  margin-left: 75px;
+.mobile-welcome {
+  font-size: 1.2rem; /* Adjusted font size */
+  margin-bottom: 1rem;
+}
+
+.mobile-containers {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem; /* Space between containers */
+  width: 100%;
+}
+
+.mobile-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: #1c1c1c;
+  border-radius: 12px;
   padding: 1rem;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 120px;
+  text-align: left;
+  position: relative;
+}
+
+.mobile-icon {
+  font-size: 1.2rem;
+  color: #ffa500;
+  margin-bottom: 0.5rem;
+}
+
+.mobile-text h4 {
+  font-size: 0.8rem; /* Smaller font size for titles */
+  margin: 0;
+}
+
+.mobile-text .mobile-amount-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.mobile-text .mobile-amount {
+  font-size: 1.2rem;
+  font-weight: bold;
   flex-grow: 1;
-  transition: margin-left 0.3s ease-in-out;
-  overflow-y: auto; /* Allow vertical scrolling */
 }
 
-.sidebar-container.collapsed ~ .content-container {
-  margin-left: 80px; /* Adjust to match collapsed sidebar width */
+.mobile-eye-icon {
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #ffa500;
 }
-.content-container {
-  margin-top: 50px;
-  margin-left: 75px;
-  padding: 1rem;
-  flex-grow: 1;
-  transition: margin-left 0.3s ease-in-out;
-  overflow-y: auto; /* Allow vertical scrolling */
-}
-
-.sidebar-container.collapsed ~ .content-container {
-  margin-left: 80px; /* Adjust to match collapsed sidebar width */
-}
-
-.transactions-page-container {
-  padding: 1rem;
-}
-/* src/Components/Body/Body.css */
-
-.toggle-amount-icon {
-  font-size: 1.5rem; /* Size of the icon */
-  cursor: pointer; /* Change cursor to pointer */
-  color: #1a0935; /* Color to match theme */
-  transition: color 0.3s; /* Transition for hover effect */
+/* Horizontal Container for Mobile View */
+.mobile-horizontal-container {
+  display: flex;
+  flex-direction: column; /* Stack title and items vertically */
+  align-items: center; /* Center all content horizontally */
+  background: #ffffff; /* White background to match dashboard */
+  border-radius: 12px; /* Rounded corners */
+  padding: 1.5rem 1rem; /* Add padding for spacing */
+  margin-top: 1rem; /* Add spacing from the containers above */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  text-align: center;
 }
 
-.toggle-amount-icon:hover {
-  color: #1a0935; /* Darker shade on hover */
+/* Title Styling */
+.mobile-horizontal-container h3 {
+  margin: 0 0 1rem; /* Add spacing below the title */
+  font-size: 1rem; /* Consistent font size */
+  font-weight: bold; /* Make the title prominent */
+  color: #333; /* Neutral color for the title */
+}
+
+/* Individual Transaction Items */
+.mobile-transaction-item-container {
+  display: flex;
+  justify-content: space-between; /* Align items horizontally */
+  width: 100%; /* Occupy full width of the container */
+}
+
+.mobile-transaction-item {
+  flex: 1; /* Equal width for all items */
+  display: flex;
+  flex-direction: column; /* Align number and label vertically */
+  align-items: center; /* Center-align content */
+}
+
+.mobile-transaction-item h4 {
+  font-size: 1.1rem; /* Bold and prominent for numbers */
+  font-weight: bold;
+  margin: 0;
+  color: #000; /* Dark color for visibility */
+}
+
+.mobile-transaction-item span {
+  font-size: 0.9rem; /* Subdued and descriptive for labels */
+  color: #555; /* Lighter color for less emphasis */
+  margin-top: 0.2rem;
+}
+
+/* Horizontal Line Below Container */
+.mobile-horizontal-line {
+  width: 100%; /* Stretch line across the screen */
+  height: 2px; /* Thickness of the line */
+  background-color: #000; /* Black color for the line */
+  margin-top: 1rem; /* Add spacing below the container */
+}
+
+/* Wrapper for Weekly Revenue Chart */
+.mobile-weekly-revenue-wrapper {
+  width: 100%; /* Full width of the screen */
+  display: flex;
+  justify-content: center; /* Center the container horizontally */
+  margin-top: 1rem; /* Add spacing above */
+  flex-grow: 1; /* Allow it to grow and fill available space */
+}
+
+/* Weekly Revenue Chart Container for Mobile View */
+.mobile-weekly-revenue-container {
+  background: #ffffff; /* White background for consistency */
+  border-radius: 12px; /* Rounded corners */
+  padding: 1.5rem 1rem; /* Add padding */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  width: 95%; /* Adjust width to match the screen size */
+  max-width: 100%; /* Ensure it doesn't exceed the screen size */
+  text-align: center; /* Center align the content */
+}
+
+/* Weekly Revenue Chart Styling */
+.mobile-weekly-revenue-chart {
+  width: 100%; /* Make the chart take full width */
+  height: auto; /* Adjust height dynamically */
+}
+
 }

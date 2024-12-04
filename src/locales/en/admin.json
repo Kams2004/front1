@@ -49,4 +49,16 @@
   "cancelButton": "Cancel",
   "confirmButton": "Confirm",
   "createNewGroupInfo": "If the group does not exist, it will be created."
+
+
+  ,
+  
+   
+    "errorFetchingRequests": "An error occurred while fetching requests.",
+    "errorDeletingRequest": "An error occurred while deleting the request.",
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page",
+    "of": "of"
+  
 }
