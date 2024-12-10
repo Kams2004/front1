@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useAuth } from "../../../../../AuthContext"; // Import AuthContext for authentication
+import { useAuth } from "../../../../../AuthContext";
 import "./ConnectionPageAdmin.css";
 import { AiOutlineArrowLeft } from "react-icons/ai";
-import pdmdLogo from "../pdmd.png"; // Import the PDMD logo
-import config from "../../../../../config"; // Import the configuration file
+import pdmdLogo from "../pdmd.png"; 
+import config from "../../../../../config";
 
 const ConnectionPage = () => {
   const [role, setRole] = useState("");
@@ -14,12 +14,12 @@ const ConnectionPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false); // Add loading state
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-  const { login } = useAuth(); // Use only the login function
+  const { login } = useAuth();
 
-  // Logout function to ensure no existing session
+
   const handleLogout = async () => {
     try {
       await axios.post(`${config.baseURL}user/logout`, {}, { withCredentials: true });
@@ -35,13 +35,13 @@ const ConnectionPage = () => {
   
     if (!username || !password || !role) {
       setError("Veuillez remplir tous les champs requis et sélectionner un rôle.");
-      setTimeout(() => setError(""), 3000); // Clear error message after 3 seconds
+      setTimeout(() => setError(""), 3000);
       setLoading(false);
       return;
     }
   
     try {
-      // Logout before starting a new login
+  
       await handleLogout();
   
       const response = await axios.post(`${config.baseURL}user/login`, {
@@ -56,14 +56,14 @@ const ConnectionPage = () => {
         const userRoles = responseData.data.roles.map((r) => r.name);
         const roleMapping = {
           Admin: "Admin",
-          Accountant: "Comptable", // Map frontend "Accountant" to backend "Comptable"
+          Accountant: "Comptable", 
         };
   
         if (userRoles.includes(roleMapping[role])) {
-          // Save backend role name to localStorage and AuthContext
+
           login({ ...responseData.data, role: roleMapping[role] });
   
-          // Navigate based on the selected frontend role
+   
           navigate(`/${role.toLowerCase()}`);
         } else {
           setError("Le rôle choisi ne correspond pas à vos rôles assignés.");
